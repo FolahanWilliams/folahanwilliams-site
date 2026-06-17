@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
+import { content } from "@/content/content";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -18,8 +19,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://folahanwilliams.vercel.app"),
   title: "Folahan Williams",
-  description: "I'm fascinated by how people think and decide.",
+  description: content.heroLine.replace(/\s*\[DRAFT[^\]]*\]/g, ""), // marker-agnostic strip
+  openGraph: { title: "Folahan Williams", description: "How people think and decide.", type: "website" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
