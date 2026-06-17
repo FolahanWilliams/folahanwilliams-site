@@ -75,7 +75,7 @@ Arc: **essence → how I think → the evidence → who I am (the reveal) → qu
 The feeling: *a beautifully-set personal essay that happens to also be a portfolio.* Deliberately nothing like Decision Intel's green/clinical product UI.
 
 - **Palette:** soft warm **cream/paper** background; **warm near-black ink** text (never pure `#000`); one accent only — a **terracotta / warm clay (hint of gold)**, used sparingly (links, a rule, the CTA, the pull-quote mark). Earthy, quietly Lagos, distinct from DI green.
-- **Type:** headlines in a warm literary **serif — Fraunces** (distinct from DI's Instrument Serif); body in a clean **humanist sans**, generous size + line-height. A real reading measure (~640–700px) for the prose sections.
+- **Type:** headlines in a warm literary **serif — Fraunces** (distinct from DI's Instrument Serif); body in a clean **humanist sans — default Inter** (swappable on the live preview if it reads too neutral against Fraunces), generous size + line-height. A real reading measure (~640–700px) for the prose sections.
 - **Motion:** gentle fade-and-rise on section enter, smooth-scroll, soft hover transitions; nothing decorative; **`prefers-reduced-motion` fully respected**. Pacing slow and confident; whitespace does the work.
 - **Layout:** single warm column, wide margins; headshot integrated softly (a real portrait, not a corporate avatar); the work shown as a few clean quiet cards, not a busy grid.
 
@@ -91,7 +91,7 @@ These are the starting direction; final tuning happens on the live preview.
 - **Assets:** `public/` holds the headshot, thesis PDF, CV PDF. **Self-hosted fonts** (Fraunces + body sans) for speed + privacy.
 - **Contact:** `mailto:` link for v1 (no backend, no spam surface). A real form is a future option, not v1.
 - **Theme:** one warm light theme. **No dark mode** (scope creep for a personal site).
-- **A11y / quality:** semantic HTML, strong contrast, reduced-motion, keyboard-friendly. A clean title/description + an **OG/social preview card** (name + throughline line) so the link previews beautifully.
+- **A11y / quality:** semantic HTML, strong contrast, reduced-motion, keyboard-friendly. A clean title/description + an **OG/social preview card** (name + throughline line — generate it *after* the final hero line is locked, since it reuses that copy) so the link previews beautifully.
 - **Deploy:** new GitHub repo → connect Vercel → `folahanwilliams.vercel.app`.
 
 ### Proposed file structure
@@ -190,6 +190,7 @@ Static site — verification is light but real:
 3. Final hero line + "How I think" prose (draft → founder edit).
 4. Faith values line / verse.
 5. Contact email.
-6. Repo name confirmation (`folahanwilliams-site` proposed).
+6. Nexus Tracker link target (exact URL/handle — needed for the §9 "all links resolve" check; the other links are already known).
+7. Repo name confirmation (`folahanwilliams-site` proposed).
 
 These do not block building the structure + styling; they are the content fills before going live.
