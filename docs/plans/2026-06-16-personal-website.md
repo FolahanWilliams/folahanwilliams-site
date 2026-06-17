@@ -57,14 +57,15 @@ Each section component has ONE responsibility: render its slice of `content.ts`.
 
 Run (from repo root `/Users/folahan/folahanwilliams-site`):
 ```bash
-npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*" --eslint --no-turbopack --use-npm
+npx create-next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*" --eslint --use-npm
 ```
 If it refuses because the dir isn't empty (the `docs/` folder + git exist), scaffold in a temp dir and copy in:
 ```bash
-npx create-next-app@latest /tmp/fw-site --typescript --tailwind --app --src-dir --import-alias "@/*" --eslint --no-turbopack --use-npm
+npx create-next-app@latest /tmp/fw-site --typescript --tailwind --app --src-dir --import-alias "@/*" --eslint --use-npm
 rsync -a --exclude='.git' /tmp/fw-site/ ./
 rm -rf /tmp/fw-site
 ```
+> Uses `@latest` (currently Next 16, Turbopack default) — fine for a tiny static site; the bundler choice doesn't matter here. If the CLI **rejects any flag** (the flag surface shifts between versions), drop that flag and re-run — none of them are load-bearing for this project.
 
 - [ ] **Step 2: Prune boilerplate**
 
@@ -113,7 +114,7 @@ git commit -m "chore: scaffold Next.js + Tailwind app"
 
 - [ ] **Step 1: Write the token system in `globals.css`**
 
-Replace `src/app/globals.css` with:
+Replace `src/app/globals.css` with the below. Note the font indirection: `next/font` injects `--font-fraunces` / `--font-inter` onto `<html>` (Task 2 Step 2), and `@theme` merely *aliases* them to `--font-display` / `--font-body`. That's why those two `--font-*` vars look "undefined" here — they're defined at runtime by `next/font`, not in this file.
 ```css
 @import "tailwindcss";
 
@@ -181,7 +182,10 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz", "SOFT"],
+  // NOTE: do NOT pass `axes: ["opsz", ...]` — `opsz` is a DEFAULT axis for
+  // Fraunces in next/font/google and listing it throws at build
+  // ("opsz is a default axis, cannot be configured"). Omitting `axes`
+  // gives the full variable range, which is all we need (weight is set in CSS).
 });
 const inter = Inter({
   subsets: ["latin"],
@@ -824,6 +828,9 @@ export const metadata: Metadata = {
 (Import `content` from `@/content/content`.)
 
 - [ ] **Step 2: Generated OG image** `src/app/opengraph-image.tsx`:
+
+> The throughline sentence below is hardcoded (a second copy of `content.heroLine`, because `ImageResponse` can't pull the live font/measure). Keep it in sync with the final `content.heroLine` when the copy is locked — it can silently drift otherwise.
+
 ```tsx
 import { ImageResponse } from "next/og";
 export const size = { width: 1200, height: 630 };
