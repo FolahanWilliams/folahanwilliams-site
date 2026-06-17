@@ -44,6 +44,15 @@ h1, h2, h3 {
 a { color: var(--color-clay); text-decoration: none; }
 a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
+/* Visible keyboard focus for all interactive elements (a11y). Uses a clay
+   ring with an offset so it reads clearly against the cream background and on
+   the pill CTA's existing border. :focus-visible keeps it keyboard-only. */
+:focus-visible {
+  outline: 2px solid var(--color-clay);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 ::selection { background: color-mix(in srgb, var(--color-clay) 22%, transparent); }
 
 /* Entrance reveal (used by <Reveal>). The animated "hidden" start state is
