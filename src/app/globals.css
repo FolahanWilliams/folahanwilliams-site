@@ -1,26 +1,52 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* palette — warm cream / ink / clay */
+  --color-paper: #faf6ef;       /* background */
+  --color-paper-2: #f3ece0;     /* soft raised */
+  --color-ink: #211c17;         /* warm near-black text */
+  --color-ink-soft: #5b5147;    /* secondary text */
+  --color-clay: #b5532a;        /* terracotta accent */
+  --color-clay-soft: #c8784f;
+  --color-line: #e6ddcf;        /* hairline rules */
+
+  /* type */
+  --font-display: var(--font-fraunces);
+  --font-body: var(--font-inter);
+
+  /* reading measure */
+  --measure: 41rem; /* ~660px */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+:root { color-scheme: light; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
+}
+
+a { color: var(--color-clay); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+::selection { background: color-mix(in srgb, var(--color-clay) 22%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
 }
