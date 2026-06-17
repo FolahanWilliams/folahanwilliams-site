@@ -8,12 +8,18 @@ export function Reveal({ children, delay = 0 }: { children: React.ReactNode; del
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setShown(true);
-      return;
-    }
+    // setState happens only inside the observer callback (a subscription),
+    // never synchronously in the effect body. Reduced-motion users need no
+    // observer at all: the `.reveal` base class is opaque and the animated
+    // start state is gated behind `@media (prefers-reduced-motion: no-preference)`
+    // in globals.css, so content is visible immediately regardless of `shown`.
     const io = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setShown(true); io.disconnect(); } },
+      ([e]) => {
+        if (e.isIntersecting) {
+          setShown(true);
+          io.disconnect();
+        }
+      },
       { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
     );
     io.observe(el);
@@ -23,12 +29,8 @@ export function Reveal({ children, delay = 0 }: { children: React.ReactNode; del
   return (
     <div
       ref={ref}
-      style={{
-        opacity: shown ? 1 : 0,
-        transform: shown ? "none" : "translateY(14px)",
-        transition: "opacity 700ms ease, transform 700ms ease",
-        transitionDelay: `${delay}ms`,
-      }}
+      className={shown ? "reveal is-shown" : "reveal"}
+      style={{ "--reveal-delay": `${delay}ms` } as React.CSSProperties}
     >
       {children}
     </div>

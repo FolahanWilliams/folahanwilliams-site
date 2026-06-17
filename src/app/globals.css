@@ -46,6 +46,25 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 ::selection { background: color-mix(in srgb, var(--color-clay) 22%, transparent); }
 
+/* Entrance reveal (used by <Reveal>). The animated "hidden" start state is
+   applied ONLY when motion is allowed, so reduced-motion users see content
+   immediately, fully opaque, with no fade/translate — and there is no JS
+   matchMedia dependency (SSR-safe). */
+.reveal { opacity: 1; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 700ms ease, transform 700ms ease;
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .reveal.is-shown {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
