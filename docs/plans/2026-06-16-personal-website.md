@@ -821,7 +821,7 @@ git commit -m "chore: add headshot, thesis, and CV assets"
 export const metadata: Metadata = {
   metadataBase: new URL("https://folahanwilliams.vercel.app"),
   title: "Folahan Williams",
-  description: content.heroLine.replace(" [DRAFT — founder edit]", ""),
+  description: content.heroLine.replace(/\s*\[DRAFT[^\]]*\]/g, ""), // marker-agnostic strip
   openGraph: { title: "Folahan Williams", description: "How people think and decide.", type: "website" },
 };
 ```
@@ -904,3 +904,4 @@ gh repo create FolahanWilliams/folahanwilliams-site --private --source=. --remot
 - [ ] **Contact email**.
 - [ ] **Nexus Tracker** + **LinkedIn** link targets confirmed (the content test checks shape, not that they resolve — eyeball them).
 - [ ] No `[DRAFT]` / `[confirm]` / `[FIRM…]` strings remain (grep `src/content/content.ts`).
+- [ ] OG card throughline (hardcoded in `opengraph-image.tsx`) matches the final `content.heroLine`.
