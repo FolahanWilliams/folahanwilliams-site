@@ -9,7 +9,7 @@ export default function OG() {
         display: "flex", flexDirection: "column", justifyContent: "center", padding: 80, fontFamily: "serif" }}>
         <div style={{ fontSize: 64 }}>Folahan Williams</div>
         <div style={{ fontSize: 30, color: "#5b5147", marginTop: 16, maxWidth: 820 }}>
-          I&rsquo;m fascinated by how people think and decide.
+          I&rsquo;m fascinated by how people reason and decide.
         </div>
         <div style={{ width: 90, height: 6, background: "#b5532a", marginTop: 28 }} />
       </div>
