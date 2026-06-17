@@ -78,3 +78,49 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ── Work cards — expand-on-hover ───────────────────────────────────────
+   Mouse: each card rests collapsed (kind + title + body) and opens on hover or
+   keyboard-focus to reveal its detail + link, lifting gently with a clay edge.
+   Touch / no-hover devices: cards are ALWAYS open (no hover dependency).
+   Motion-safe: the lift + smoothing apply only when motion is welcome, so
+   reduced-motion users get an instant, jump-free reveal. The detail/link stay
+   in the DOM at all times (kept for assistive tech). */
+.work-card {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: 14px;
+  padding: 1.4rem;
+}
+/* default state = OPEN (this is what touch / no-hover devices get) */
+.work-card-reveal { display: grid; grid-template-rows: 1fr; opacity: 1; }
+.work-card-reveal-inner { overflow: hidden; min-height: 0; }
+
+/* only where a precise hover pointer exists: rest collapsed, open on hover/focus */
+@media (hover: hover) and (pointer: fine) {
+  .work-card-reveal { grid-template-rows: 0fr; opacity: 0; }
+  .work-card:hover,
+  .work-card:focus-within {
+    border-color: color-mix(in srgb, var(--color-clay) 50%, var(--color-line));
+    box-shadow: 0 16px 38px -22px color-mix(in srgb, var(--color-ink) 60%, transparent);
+  }
+  .work-card:hover .work-card-reveal,
+  .work-card:focus-within .work-card-reveal {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+/* smoothing + the lift apply only when motion is welcome */
+@media (prefers-reduced-motion: no-preference) {
+  .work-card {
+    transition: transform 320ms ease, box-shadow 320ms ease, border-color 320ms ease;
+  }
+  .work-card-reveal {
+    transition: grid-template-rows 360ms ease, opacity 300ms ease;
+  }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .work-card:hover,
+  .work-card:focus-within { transform: translateY(-5px); }
+}
