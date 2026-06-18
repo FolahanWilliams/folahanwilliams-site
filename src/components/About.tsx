@@ -2,6 +2,8 @@ import { Section } from "./Section";
 import { content } from "@/content/content";
 import { AvailabilityTile } from "./widgets/AvailabilityTile";
 import { PianoTile } from "./widgets/PianoTile";
+import { GuitarTile } from "./widgets/GuitarTile";
+import { GymTile } from "./widgets/GymTile";
 import { RecordTile } from "./widgets/RecordTile";
 import { BooksTile } from "./widgets/BooksTile";
 
@@ -43,6 +45,14 @@ export function About() {
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>
           <PianoTile />
+        </article>
+
+        <article className="bento-tile" style={{ gridColumn: "span 3" }}>
+          <GuitarTile />
+        </article>
+
+        <article className="bento-tile" style={{ gridColumn: "span 3" }}>
+          <GymTile />
         </article>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>

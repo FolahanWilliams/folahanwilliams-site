@@ -484,10 +484,40 @@ export const availability = {
 export const piano = {
   heading: "At the piano",
   body:
-    "Twelve years in — ABRSM Grade 6 piano, Grade 5 theory with distinction, and Grade 6 guitar on the way. [confirm exact grades] Practising something for years before you’re any good at it turns out to be the same discipline everything else here needed.",
+    "Twelve years in: ABRSM Grade 6 piano, Grade 5 theory with distinction. Practising something for years before you’re any good at it turns out to be the same discipline everything else here needed.",
   // Drop a recording at public/piano.mp3 to light up the player.
   audio: "/piano.mp3",
   pieceLabel: "A piece I keep coming back to",
+};
+
+export const guitar = {
+  heading: "And the guitar",
+  pieceLabel: "Six strings",
+  body:
+    "ABRSM Grade 6 guitar, picked up alongside the piano. A different instrument, but the same lesson: the boring reps you put in long before anyone hears you are the whole game.",
+};
+
+// [confirm] your real training split. Push-pull-legs is a sensible editable default.
+export interface SplitDay {
+  day: string;
+  focus: "Push" | "Pull" | "Legs" | "Rest";
+  note: string;
+}
+export const fitness = {
+  eyebrow: "Outside the screen",
+  heading: "In the gym",
+  daysPerWeek: 6,
+  body:
+    "Six days a week, on a push-pull-legs split. It is the same kind of system as everything else here: small, repeatable, and built to run on the days I least feel like it. Discipline compounds.",
+  split: [
+    { day: "Mon", focus: "Push", note: "Chest, shoulders, triceps." },
+    { day: "Tue", focus: "Pull", note: "Back, biceps, rear delts." },
+    { day: "Wed", focus: "Legs", note: "Quads, hamstrings, calves." },
+    { day: "Thu", focus: "Push", note: "Heavier pressing, lower volume." },
+    { day: "Fri", focus: "Pull", note: "Rows, vertical pulls, arms." },
+    { day: "Sat", focus: "Legs", note: "Posterior-chain focus." },
+    { day: "Sun", focus: "Rest", note: "Recovery. The growth happens here." },
+  ] as SplitDay[],
 };
 
 // ── The record (CV), favourite reading, and the bias taxonomy ──────────
