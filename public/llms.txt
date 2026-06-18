@@ -18,7 +18,7 @@ Decision Intel is a reasoning-audit platform founded by Folahan Williams. It rea
 
 ## Links
 
-- Website: https://folahanwilliams-site.vercel.app
+- Website: https://folahanwilliams.com
 - Decision Intel: https://decision-intel.com
 - GitHub: https://github.com/FolahanWilliams
 - Email: folahanwilliams@gmail.com

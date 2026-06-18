@@ -3,8 +3,9 @@
 // custom domain (e.g. folahanwilliams.com) is connected; everything derives.
 // ─────────────────────────────────────────────────────────────────────
 export const seo = {
-  // [update when the custom domain lands — this is the single source]
-  siteUrl: "https://folahanwilliams-site.vercel.app",
+  // The canonical domain — everything (canonical URL, OG, JSON-LD, sitemap)
+  // derives from this single source.
+  siteUrl: "https://folahanwilliams.com",
   title: "Folahan Williams — Founder of Decision Intel",
   tagline: "16-year-old founder building AI that audits the reasoning behind decisions",
   description:
