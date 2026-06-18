@@ -124,3 +124,49 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .work-card:hover,
   .work-card:focus-within { transform: translateY(-5px); }
 }
+
+/* ── Floating nav pill ──────────────────────────────────────────────── */
+.floating-nav {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 50;
+  display: flex;
+  gap: 0.15rem;
+  padding: 0.3rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-paper) 78%, transparent);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 10px 30px -16px rgba(33, 28, 23, 0.4);
+  backdrop-filter: saturate(1.4) blur(10px);
+  -webkit-backdrop-filter: saturate(1.4) blur(10px);
+  max-width: calc(100vw - 1.5rem);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.floating-nav::-webkit-scrollbar { display: none; }
+.floating-nav-item {
+  appearance: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+  transition: color 200ms ease, background 200ms ease;
+}
+.floating-nav-item:hover { color: var(--color-ink); }
+.floating-nav-item[data-active="true"] {
+  color: var(--color-ink);
+  background: var(--color-paper-2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .floating-nav-item { transition: none; }
+}
+
+/* section anchors clear the floating nav when scrolled to */
+.anchor { scroll-margin-top: 4.5rem; }

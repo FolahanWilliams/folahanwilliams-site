@@ -136,3 +136,81 @@ export const content = {
   ] as LinkItem[],
   cv: "/cv.pdf",
 } as const;
+
+// ─────────────────────────────────────────────────────────────────────
+// The signature interactive: a sound-looking decision you can take apart.
+// Toggle the biases hiding inside the reasoning and watch the conviction —
+// and a Decision-Quality score — come undone. This is Decision Intel in one
+// tile. Edit the scenario here; the component is purely a renderer.
+// ─────────────────────────────────────────────────────────────────────
+
+export interface LabBias {
+  id: string;
+  label: string;
+  flagsStep: string; // which step id it annotates
+  note: string;      // the flaw it exposes
+  penalty: number;   // points it knocks off the quality score
+  rewrites: string;  // how it bends the verdict
+}
+
+export const reasoningLab = {
+  eyebrow: "The reasoning lab",
+  title: "Watch a sound decision fall apart",
+  intro:
+    "Here is a recommendation that looks airtight. Switch on the biases hiding inside it and watch the conviction — and the quality of the thinking — come undone. It is the thing I build, in miniature.",
+  decision: "Acquire our largest competitor for $420M.",
+  baseScore: 84,
+  scoreFloor: 19,
+  baseVerdict: "Proceed — high conviction.",
+  floorVerdict: "Pause. The conviction was manufactured, not earned.",
+  steps: [
+    { id: "s1", text: "Their revenue is growing 40% a year." },
+    { id: "s2", text: "$420M is in line with what the last three deals in the space paid." },
+    { id: "s3", text: "Our team has closed six acquisitions — this is familiar ground." },
+    { id: "s4", text: "If we walk, a rival buys them instead." },
+  ],
+  biases: [
+    {
+      id: "anchoring",
+      label: "Anchoring",
+      flagsStep: "s2",
+      note: "“In line with the last three deals” anchors the price to what others paid — not to what the business is intrinsically worth.",
+      penalty: 18,
+      rewrites: "Proceed — but the price is borrowed from a number nobody verified.",
+    },
+    {
+      id: "overconfidence",
+      label: "Overconfidence",
+      flagsStep: "s1",
+      note: "40% growth is extrapolated straight out. No one asked what happens when it reverts toward the market’s mean.",
+      penalty: 16,
+      rewrites: "Proceed — but the upside rests on a trend that may already be ending.",
+    },
+    {
+      id: "inside-view",
+      label: "Inside view",
+      flagsStep: "s3",
+      note: "“We’ve done six” trusts the inside story over the base rate — most acquisitions this size miss their thesis.",
+      penalty: 20,
+      rewrites: "Proceed cautiously — experience is being used to skip the outside view.",
+    },
+    {
+      id: "loss-aversion",
+      label: "Loss aversion",
+      flagsStep: "s4",
+      note: "“A rival might buy them” is fear of a loss, not evidence of value. The threat is doing the persuading.",
+      penalty: 14,
+      rewrites: "The case for the deal is now mostly the fear of not doing it.",
+    },
+  ] as LabBias[],
+  caption: "This is Decision Intel, in one tile — but it runs on real strategic memos, not a toy.",
+};
+
+// Floating-nav sections (anchor ids on the page).
+export const navSections = [
+  { id: "top", label: "Folahan" },
+  { id: "lab", label: "The lab" },
+  { id: "work", label: "Work" },
+  { id: "about", label: "About" },
+  { id: "reach", label: "Contact" },
+] as const;
