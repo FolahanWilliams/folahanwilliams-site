@@ -51,7 +51,7 @@ export const seo = {
     },
     {
       q: "What is Folahan Williams known for?",
-      a: "Founding Decision Intel; published research on the cognitive roots of the 2008 financial crisis; co-founding Finding Finance, a student-led financial-literacy initiative; and a TED-style talk on metacognition.",
+      a: "Founding Decision Intel; published research on the neuro-cognitive roots of the UK's 2008 banking crisis; co-founding Finding Finance, a student-led financial-literacy initiative; and a TED-style talk on metacognition.",
     },
     {
       q: "How can I contact Folahan Williams?",
@@ -139,18 +139,20 @@ export const content = {
       body:
         "An autonomous market-intelligence platform built on a multi-agent AI architecture. It doesn’t just flag what moved — it argues why, runs every thesis past an adversarial “red team” agent that tries to tear it down, and calibrates its own confidence against its real track record. The same obsession as everything else here, turned on the market and on itself.",
       detail:
-        "A 5-agent pipeline with self-critique and a closed learning loop; raw confidence is remapped to actual win-rates by isotonic regression, so “78%” genuinely means ~78%. A single-developer build of an intelligence pipeline usually found inside a quant fund.",
+        "Five specialised agents — overreaction, contagion, catalyst, earnings guard, red team — feed a Think → Critique → Decide loop over 42 live news feeds. Raw confidence is remapped to real win-rates by isotonic regression, so “78%” genuinely means ~78%. A single-developer build of a pipeline usually found inside a quant fund.",
+      href: "https://sentinel-nine-sable.vercel.app",
+      linkLabel: "See Sentinel live",
     },
     {
       key: "thesis-2008",
-      title: "The cognitive roots of the 2008 crisis",
+      title: "The neuro-cognitive roots of the 2008 UK crisis",
       kindLabel: "the question, as research",
       body:
-        "A published paper tracing the 2008 financial crisis to its cognitive roots — the biases, and the cortisol and testosterone feedback loops, that turned individually rational people into a collectively irrational market. It’s where the whole obsession started.",
+        "A published paper arguing the UK’s 2008 banking crisis — the run on Northern Rock, a full year before Lehman — was less a failure of maths than a failure of the human mind: bounded rationality, System 1 racing ahead of System 2, and the hormonal “Winner Effect” that biologically dials up a trader’s appetite for risk as the profits roll in. It’s where the whole obsession started.",
       detail:
-        "It pairs the cognitive-bias literature with the endocrinology of risk-taking — the argument that the crash was as much physiological as financial.",
-      pdf: "/thesis.pdf",
-      linkLabel: "Read the paper (PDF)",
+        "It pairs the cognitive-bias literature with the endocrinology of risk-taking — Coates & Herbert’s London trading-floor study — to argue the crash was as much physiological as financial.",
+      href: "https://docs.google.com/document/d/1-Q_aNPdfOi3rElRX6JjzmlMtXGKKKujeHwC1zwb3BQA/edit?usp=sharing",
+      linkLabel: "Read the paper",
     },
     {
       key: "finding-finance",
@@ -378,10 +380,10 @@ export interface CrisisEvent {
   drop: number; // 0–100, cumulative
 }
 export const crisisTimeline: CrisisEvent[] = [
-  { date: "Feb 2007", label: "Subprime cracks", detail: "Early-payment defaults spike. The market treats it as contained.", bias: "Optimism — “housing never falls nationally.”", drop: 4 },
-  { date: "Aug 2007", label: "BNP freezes funds", detail: "BNP Paribas halts withdrawals from three funds; liquidity seizes overnight.", bias: "Herding — everyone held the same trade, so everyone ran at once.", drop: 14 },
-  { date: "Mar 2008", label: "Bear Stearns falls", detail: "Bear is sold to JPMorgan for $2 a share over a weekend.", bias: "Anchoring — risk was still priced off pre-crisis spreads.", drop: 34 },
-  { date: "Sep 2008", label: "Lehman", detail: "Lehman files for bankruptcy and the system goes into cardiac arrest.", bias: "Overconfidence + cortisol — the desks that won biggest doubled down hardest.", drop: 78 },
+  { date: "2004–06", label: "The wholesale bet", detail: "Northern Rock funds its mortgage book on short-term wholesale borrowing instead of deposits — chasing near-term profit over long-term stability.", bias: "Short-termism + bounded rationality — System 1 shortcuts skipping System 2 scrutiny.", drop: 7 },
+  { date: "2005–07", label: "The Winner Effect", detail: "On London trading floors, winning trades raise testosterone and dopamine — biologically dialling up risk appetite and dulling the sense of danger (Coates & Herbert, 2008).", bias: "The Winner Effect — a hormonal feedback loop that quietly rewards more risk.", drop: 24 },
+  { date: "Sep 2007", label: "The Northern Rock run", detail: "Wholesale funding freezes and depositors queue down the street — the first run on a British bank in 140 years, a full year before Lehman.", bias: "Herding + status-quo bias — everyone held the same trade, so everyone ran at once.", drop: 54 },
+  { date: "2008", label: "Cortisol takes over", detail: "As the liquidity freeze bites, stress hormones impair the prefrontal cortex — the exact circuitry regulators needed for rational crisis decisions.", bias: "Overconfidence, then cortisol — faith in efficient markets, then brains too stressed to reason.", drop: 84 },
 ];
 
 // ── Stage 3: availability + piano ──────────────────────────────────────
