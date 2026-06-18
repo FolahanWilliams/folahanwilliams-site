@@ -170,3 +170,38 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 /* section anchors clear the floating nav when scrolled to */
 .anchor { scroll-margin-top: 4.5rem; }
+
+/* ── Bento grid (Work) ──────────────────────────────────────────────── */
+.bento {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+.bento-tile {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+@media (max-width: 760px) {
+  .bento { grid-template-columns: 1fr; }
+  .bento-tile { grid-column: span 1 !important; }
+}
+@media (prefers-reduced-motion: no-preference) and (hover: hover) and (pointer: fine) {
+  .bento-tile { transition: transform 280ms ease, box-shadow 280ms ease, border-color 280ms ease; }
+  .bento-tile:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-clay) 35%, var(--color-line));
+    box-shadow: 0 16px 38px -22px color-mix(in srgb, var(--color-ink) 55%, transparent);
+  }
+}
+
+/* Sentinel live dot */
+@media (prefers-reduced-motion: no-preference) {
+  .ticker-pulse { animation: ticker-pulse 1.8s ease-in-out infinite; }
+}
+@keyframes ticker-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.78); }
+}

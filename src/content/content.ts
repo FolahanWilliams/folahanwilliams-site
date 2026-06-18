@@ -206,6 +206,42 @@ export const reasoningLab = {
   caption: "This is Decision Intel, in one tile — but it runs on real strategic memos, not a toy.",
 };
 
+// ── Live project-tile data (Stage 2) ──────────────────────────────────
+
+// Decision Intel — a representative Decision Quality Index, animated in.
+export const dqiDemo = { score: 72, label: "Decision Quality Index" };
+
+// Sentinel — illustrative conviction feed (NOT real advice; the agents are
+// named for the patterns they hunt). The "killed" row shows the red-team.
+export interface SentinelSignal {
+  agent: string;
+  line: string;
+  confidence: number; // 0 = killed by the red team
+  killed?: boolean;
+}
+export const sentinelSignals: SentinelSignal[] = [
+  { agent: "Overreaction", line: "A profitable name dragged down 14% in a sector selloff — on no company news.", confidence: 76 },
+  { agent: "Catalyst", line: "A quiet supply deal the market hasn't priced into the multiple yet.", confidence: 71 },
+  { agent: "Contagion", line: "A peer's fraud headline is bleeding into a clean balance sheet next door.", confidence: 68 },
+  { agent: "Red team", line: "Thesis killed — the 'cheap' multiple is cheap because earnings are about to reset.", confidence: 0, killed: true },
+];
+
+// The 2008 crisis, through the cognitive-bias lens of the thesis. `drop` is the
+// cumulative fall used to draw the descending line.
+export interface CrisisEvent {
+  date: string;
+  label: string;
+  detail: string;
+  bias: string;
+  drop: number; // 0–100, cumulative
+}
+export const crisisTimeline: CrisisEvent[] = [
+  { date: "Feb 2007", label: "Subprime cracks", detail: "Early-payment defaults spike. The market treats it as contained.", bias: "Optimism — “housing never falls nationally.”", drop: 4 },
+  { date: "Aug 2007", label: "BNP freezes funds", detail: "BNP Paribas halts withdrawals from three funds; liquidity seizes overnight.", bias: "Herding — everyone held the same trade, so everyone ran at once.", drop: 14 },
+  { date: "Mar 2008", label: "Bear Stearns falls", detail: "Bear is sold to JPMorgan for $2 a share over a weekend.", bias: "Anchoring — risk was still priced off pre-crisis spreads.", drop: 34 },
+  { date: "Sep 2008", label: "Lehman", detail: "Lehman files for bankruptcy and the system goes into cardiac arrest.", bias: "Overconfidence + cortisol — the desks that won biggest doubled down hardest.", drop: 78 },
+];
+
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
   { id: "top", label: "Folahan" },
