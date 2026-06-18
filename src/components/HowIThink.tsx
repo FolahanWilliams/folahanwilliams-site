@@ -1,6 +1,6 @@
 import { Section } from "./Section";
 import { content } from "@/content/content";
-import { ThinkingLayers } from "./widgets/ThinkingLayers";
+import { FounderLoop } from "./widgets/FounderLoop";
 
 export function HowIThink() {
   const { heading, paragraphs, pullQuote } = content.howIThink;
@@ -31,9 +31,9 @@ export function HowIThink() {
           </blockquote>
         </div>
 
-        {/* right — drill a confident decision down to its root */}
+        {/* right — the operating loop behind the founder mindset */}
         <div className="howi-viz">
-          <ThinkingLayers />
+          <FounderLoop />
         </div>
       </div>
     </Section>

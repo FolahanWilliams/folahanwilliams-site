@@ -106,8 +106,9 @@ export const content = {
   howIThink: {
     heading: "How I think",
     paragraphs: [
-      "The same question has followed me into everything I do: why do smart, well-resourced people get important decisions so wrong? I don’t think it’s a lack of intelligence. I think good reasoning has to be built and pressure-tested, not assumed — and most of the time, nobody does the building. The mistake is already in the thinking long before it shows up in the result.",
-      "So I work the question from every side I can reach. I read the cognitive science and the market history. I write. I build software that audits the reasoning behind a decision before the outcome can punish it. And I teach it to people younger than me, because explaining something is the fastest way to find out whether you actually understand it. The thread isn’t finance, or psychology, or code — it’s the quality of the thinking underneath all three.",
+      "One question has followed me into everything: why do smart, well-resourced people get important decisions so wrong? I don’t think it’s a lack of intelligence. Good reasoning has to be built and pressure-tested, not assumed — and most of the time nobody does the building. The mistake is already in the thinking long before it shows up in the result.",
+      "But I’m not content to just diagnose it. When I see a flawed way of reasoning, my instinct is to build the system that catches it — and ship it. Decision Intel and Sentinel are both that instinct made real: full products, built end-to-end and solo, put in front of real memos and real markets instead of left as ideas. I’d rather pressure-test a thing in the world than perfect it on paper.",
+      "And that instinct isn’t tied to one place or one field. Raised between Lagos and the UK and headed for San Francisco, I think in global markets by default. The thread running through the company, the research, the teaching, and a live trading desk isn’t finance, or psychology, or code — it’s the quality of the thinking underneath all of them.",
     ],
     // [confirm] swap this for a real line from your metacognition talk
     pullQuote:
@@ -199,6 +200,7 @@ export const content = {
   // [confirm] this is your Gmail as a working default — swap it for whatever address
   // you actually want public (a personal site invites some spam to whatever you list).
   contactEmail: "folahanwilliams@gmail.com",
+  calendly: "https://calendly.com/folahanwilliams/30min",
   links: [
     { label: "GitHub", href: "https://github.com/FolahanWilliams" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/folahan-williams-13a7b03a2/" },
@@ -217,17 +219,67 @@ export const content = {
 export interface Facet {
   verb: string;   // short label drawn on the wheel slice
   title: string;  // full name shown in the centre
-  line: string;   // one line shown in the centre on hover/focus
+  line: string;   // one line shown in the centre hub
+  blurb: string;  // richer paragraph shown in the floating box below the wheel
   href: string;   // in-page anchor (or external)
+  linkLabel: string;
   color: string;  // slice fill (white text sits on top)
 }
 export const facets: Facet[] = [
-  { verb: "Build", title: "Decision Intel", line: "AI that audits the reasoning behind high-stakes decisions.", href: "#lab", color: "#b5532a" },
-  { verb: "Ship", title: "Side builds", line: "Sentinel and other systems I ship in my spare time — usually solo.", href: "#work", color: "#c07f2f" },
-  { verb: "Research", title: "The 2008 crisis", line: "A published paper tracing the crash to its cognitive roots.", href: "#work", color: "#6f7d4a" },
-  { verb: "Teach", title: "Finding Finance", line: "Teaching younger students how money — and bias — really work.", href: "#work", color: "#3f7d62" },
-  { verb: "Read", title: "What I'm reading", line: "Kahneman, Housel, Dalio — the shelf everything rests on.", href: "#about", color: "#a85a6b" },
-  { verb: "Play", title: "At the piano", line: "Twelve years in. The same discipline as everything else here.", href: "#about", color: "#9c6b3f" },
+  {
+    verb: "Build",
+    title: "Decision Intel",
+    line: "AI that audits the reasoning behind high-stakes decisions.",
+    blurb: "My company. It reads a strategic memo, surfaces the cognitive biases and weak assumptions hiding in the reasoning before the decision is made, and grades its quality. Built end-to-end, solo.",
+    href: "#lab",
+    linkLabel: "See it work",
+    color: "#b5532a",
+  },
+  {
+    verb: "Ship",
+    title: "Side builds",
+    line: "Systems I ship in my spare time — usually solo, usually fast.",
+    blurb: "Sentinel, an autonomous market-intelligence engine with a five-agent reasoning pipeline that runs live — plus whatever else I'm building. I'd rather ship a thing into the world than perfect it on paper.",
+    href: "#work",
+    linkLabel: "See the builds",
+    color: "#c07f2f",
+  },
+  {
+    verb: "Research",
+    title: "Where it started",
+    line: "A published paper on the cognitive roots of a financial crisis.",
+    blurb: "A published paper arguing a banking crisis was a failure of the human mind, not the maths — bounded rationality, the hormonal Winner Effect, cortisol under stress. The obsession behind everything else started here.",
+    href: "#work",
+    linkLabel: "Read the research",
+    color: "#6f7d4a",
+  },
+  {
+    verb: "Teach",
+    title: "Finding Finance",
+    line: "Teaching younger students how money — and bias — really work.",
+    blurb: "A student-led initiative I co-founded to teach younger students how money works, and the psychology that quietly drives the decisions they'll make about it. Explaining something is how I test that I actually understand it.",
+    href: "#work",
+    linkLabel: "More on this",
+    color: "#3f7d62",
+  },
+  {
+    verb: "Read",
+    title: "What I'm reading",
+    line: "Kahneman, Housel, Dalio — the shelf everything rests on.",
+    blurb: "Kahneman, Housel, Dalio, Lembke. The behavioural-science and market-history shelf that the company, the research, and the way I think all rest on.",
+    href: "#about",
+    linkLabel: "See the shelf",
+    color: "#a85a6b",
+  },
+  {
+    verb: "Play",
+    title: "At the piano",
+    line: "Twelve years in. The same discipline as everything else here.",
+    blurb: "Twelve years at the piano — Grade 6 piano, Grade 5 theory with distinction, Grade 6 guitar. Practising something for years before you're any good at it turns out to be the same discipline everything else here needed.",
+    href: "#about",
+    linkLabel: "More about me",
+    color: "#9c6b3f",
+  },
 ];
 
 // ─────────────────────────────────────────────────────────────────────
@@ -249,6 +301,29 @@ export const thinkingLayers = {
     { depth: "The root", label: "The assumption nobody checked", text: "That the future would look like the recent past." },
   ] as ThoughtLayer[],
   payoff: "The mistake was already in the thinking — long before it showed up in the result.",
+};
+
+// ─────────────────────────────────────────────────────────────────────
+// "The loop I run" — the operating method behind the founder mindset. The
+// same five-step cycle whether the thing is a company, a paper, or a
+// classroom. Rendered as an animated ring; hover a node for how it's lived.
+// ─────────────────────────────────────────────────────────────────────
+export interface LoopNode {
+  key: string;
+  label: string;
+  line: string;    // the principle
+  example: string; // how it shows up in the real work
+}
+export const operatingLoop = {
+  eyebrow: "The loop I run",
+  caption: "The same cycle, whether the thing is a company, a paper, or a classroom.",
+  nodes: [
+    { key: "notice", label: "Notice", line: "Find where smart people reason badly — and no one is checking.", example: "The 2008 paper started here: a crisis everyone blamed on the maths was really a failure of minds." },
+    { key: "build", label: "Build", line: "Turn the flaw into a system that catches it. End-to-end, usually solo.", example: "Decision Intel and Sentinel are both this step — full products, not prototypes." },
+    { key: "ship", label: "Ship", line: "Put it in front of real people and real markets, fast. Shipped beats perfect.", example: "Sentinel runs live; Decision Intel audits real strategic memos." },
+    { key: "test", label: "Pressure-test", line: "Let reality — and an adversary — try to break the thinking before it costs anything.", example: "Both run an adversarial red team against their own conclusions." },
+    { key: "compound", label: "Compound", line: "Every outcome sharpens the next call. The loop itself is the edge.", example: "Calibration loops mean each call is a little more right next quarter than this one." },
+  ] as LoopNode[],
 };
 
 // ─────────────────────────────────────────────────────────────────────
@@ -485,7 +560,7 @@ export const biasTaxonomy: BiasChip[] = [
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
   { id: "top", label: "Folahan" },
-  { id: "lab", label: "The lab" },
+  { id: "lab", label: "Decision Intel" },
   { id: "work", label: "Work" },
   { id: "about", label: "About" },
   { id: "reach", label: "Contact" },

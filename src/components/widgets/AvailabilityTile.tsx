@@ -1,4 +1,4 @@
-import { availability } from "@/content/content";
+import { availability, content } from "@/content/content";
 
 /** A "when I'm generally around" grid — illustrative, editable in content.ts. */
 export function AvailabilityTile() {
@@ -34,7 +34,7 @@ export function AvailabilityTile() {
         ))}
       </div>
 
-      <a href="#reach" style={{ display: "inline-block", marginTop: "1rem", fontSize: "0.9rem" }}>
+      <a href={content.calendly} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "1rem", fontSize: "0.9rem" }}>
         Find a time →
       </a>
     </div>
