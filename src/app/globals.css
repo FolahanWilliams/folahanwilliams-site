@@ -297,6 +297,40 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
   .gym-day[data-on="true"] { transform: translateY(-3px); }
 }
 
+/* ── Mobile polish ──────────────────────────────────────────────────── */
+/* a stray transform (wheel slice push, card lift) must never cause sideways
+   scroll on a phone */
+html { overflow-x: clip; }
+
+@media (max-width: 640px) {
+  /* hero: tighten the stack, keep the wheel + box comfortably on screen */
+  .hero-grid { gap: 1.75rem; }
+  .facet-wheel { max-width: 300px; }
+  .facet-box { min-height: 104px; }
+
+  /* Decision Intel product window: less chrome, no label overflow */
+  .di-body { padding: 1.1rem 1rem 1.2rem; }
+  .di-memo { padding: 0.6rem 0.8rem; }
+  .di-chrome { padding: 0.6rem 0.8rem; }
+  .di-chrome-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+
+  /* operating loop */
+  .loop-wheel { max-width: 280px; }
+
+  /* bento: a touch tighter so cards breathe on a narrow column */
+  .bento { gap: 0.85rem; }
+  .bento-tile { padding: 1.25rem; }
+
+  /* section vertical rhythm a little shorter on phones */
+  section { padding-left: 1.25rem; padding-right: 1.25rem; }
+}
+
+/* very small phones: keep the gym week tappable, never cramped */
+@media (max-width: 380px) {
+  .gym-week { gap: 4px; }
+  .gym-day { font-size: 0.72rem; }
+}
+
 /* ── Books shelf ───────────────────────────────────────────────────── */
 .shelf {
   display: flex;

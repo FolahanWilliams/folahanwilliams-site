@@ -26,8 +26,8 @@ export function Hero() {
             I&rsquo;m building{" "}
             <a href={building.href} target="_blank" rel="noopener noreferrer" style={{ borderBottom: "2px solid var(--color-clay)", paddingBottom: 1 }}>
               {building.product}
-            </a>{" "}
-            — {building.what}
+            </a>
+            <span>: {building.what}</span>
           </p>
 
           <p style={{ fontSize: "1.02rem", lineHeight: 1.65, color: "var(--color-ink-soft)", margin: 0, maxWidth: "34rem" }}>

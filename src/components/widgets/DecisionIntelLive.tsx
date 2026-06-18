@@ -290,7 +290,7 @@ export function DecisionIntelLive() {
                         }}
                       >
                         <div style={{ fontSize: 10.5, fontWeight: 800, letterSpacing: "0.14em", textTransform: "uppercase", color: DI.muted }}>Cognitive bias</div>
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10 }}>
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 8, flexWrap: "wrap" }}>
                           <h4 style={{ fontSize: 15, fontWeight: 700, color: DI.ink, margin: 0, letterSpacing: "-0.012em" }}>{b.label}</h4>
                           <span style={{ flexShrink: 0, fontSize: 11, fontWeight: 700, color: sev.color, background: `${sev.color}14`, border: `1px solid ${sev.color}33`, borderRadius: 999, padding: "2px 9px", whiteSpace: "nowrap" }}>
                             {sev.label} · −{b.penalty} DQI
