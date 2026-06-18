@@ -38,9 +38,4 @@ describe("content integrity", () => {
   it("contact email is a mailto-able address", () => {
     expect(content.contactEmail).toMatch(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
   });
-
-  it("never names the advisor (confidentiality §7)", () => {
-    expect(content.proof.advisor.toLowerCase()).not.toContain("reiner");
-    expect(content.proof.advisor).toMatch(/\$32B|Wiz/);
-  });
 });

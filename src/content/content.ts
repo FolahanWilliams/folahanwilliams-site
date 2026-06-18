@@ -165,7 +165,7 @@ export const content = {
     },
     {
       key: "investment-internship",
-      title: "Investment Analyst, [confirm: firm · location · dates]",
+      title: "Investment Analyst, Sankore",
       kindLabel: "the question, in practice",
       body:
         "The same lens, applied to live markets: building a portfolio-intelligence view that makes a fund’s exposure, its risk, and the real drivers of its returns legible at a glance, so the people making the calls can actually see what they’re deciding on.",
@@ -191,8 +191,6 @@ export const content = {
   proof: {
     review:
       "Rated “Excellent” across quality of work, timekeeping, work relationships, and competency in role during a finance internship, cited for math and communication, and for being receptive to feedback. Objectives signed off as fully met.",
-    advisor:
-      "Advised by a senior advisor who helped take Wiz to a $32B outcome.", // never named, §7
   },
 
   // §3.6 reach me
@@ -264,8 +262,8 @@ export const facets: Facet[] = [
   {
     verb: "Read",
     title: "What I'm reading",
-    line: "Kahneman, Housel, Dalio: the shelf everything rests on.",
-    blurb: "Kahneman, Housel, Dalio, Lembke. The behavioural-science and market-history shelf that the company, the research, and the way I think all rest on.",
+    line: "Kahneman, Cialdini, Dalio: the shelf everything rests on.",
+    blurb: "Kahneman, Cialdini, Dalio, Lembke. The behavioural-science and market-history shelf that the company, the research, and the way I think all rest on.",
     href: "#about",
     linkLabel: "See the shelf",
     color: "#a85a6b",
@@ -562,7 +560,7 @@ export interface Book {
 export const books: Book[] = [
   { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", why: "The two-system model everything I build rests on." },
   { title: "Noise", author: "Kahneman · Sibony · Sunstein", why: "Why two experts disagree, and why that variance is its own kind of error." },
-  { title: "The Psychology of Money", author: "Morgan Housel", why: "Behaviour beats spreadsheets; money is a story we tell ourselves." },
+  { title: "Influence", author: "Robert Cialdini", why: "The six levers that move a decision before the reasoning ever gets a vote." },
   { title: "Dopamine Nation", author: "Anna Lembke", why: "The neuroscience of why the easy escape always wins in the moment." },
   { title: "Changing World Order", author: "Ray Dalio", why: "Cycles repeat because the people inside them forget the last one." },
 ];
