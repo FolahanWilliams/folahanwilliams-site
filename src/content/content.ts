@@ -24,7 +24,11 @@ export const seo = {
   ],
   // Authoritative profiles for entity resolution (sameAs). Add LinkedIn + X
   // once the exact URLs are known — keep only valid absolute URLs here.
-  sameAs: ["https://github.com/FolahanWilliams", "https://decision-intel.com"],
+  sameAs: [
+    "https://github.com/FolahanWilliams",
+    "https://www.linkedin.com/in/folahan-williams-13a7b03a2/",
+    "https://decision-intel.com",
+  ],
   jobTitle: "Founder & CEO, Decision Intel",
   knowsAbout: [
     "Behavioral economics",
@@ -187,7 +191,7 @@ export const content = {
   contactEmail: "folahanwilliams@gmail.com",
   links: [
     { label: "GitHub", href: "https://github.com/FolahanWilliams" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/[confirm]" }, // [confirm target]
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/folahan-williams-13a7b03a2/" },
     { label: "Decision Intel", href: "https://decision-intel.com" },
     { label: "Nexus Tracker", href: "https://github.com/FolahanWilliams/nexus-tracker" }, // [confirm target]
   ] as LinkItem[],
