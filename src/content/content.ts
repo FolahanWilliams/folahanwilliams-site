@@ -250,6 +250,36 @@ export const thinkingLayers = {
 };
 
 // ─────────────────────────────────────────────────────────────────────
+// A faithful Decision Intel product view — recreated from the real audit
+// grammar (the 270° DQI arc + severity-banded finding cards, the actual
+// 85/70/55/40 grade thresholds). The lab is the idea in one tile; this is
+// what the shipped product actually looks like, on the same decision.
+// ─────────────────────────────────────────────────────────────────────
+export type Severity = "critical" | "high" | "medium" | "low";
+export interface AuditFinding {
+  eyebrow: string;
+  title: string;
+  severity: Severity;
+  confidence: number; // 0–100
+  excerpt: string;
+}
+export const productAudit = {
+  eyebrow: "Decision Intel · the product",
+  heading: "And here's the real thing",
+  intro:
+    "The lab above is the idea in one tile. This is the actual audit — the same engine, on a real strategic memo: a Decision Quality Index, then the biases it found in the reasoning.",
+  memo: "Acquire our largest competitor for $420M.",
+  score: 56,
+  verdict: "Revise before the committee sees it.",
+  findings: [
+    { eyebrow: "Cognitive bias", title: "Anchoring", severity: "high", confidence: 84, excerpt: "$420M is in line with what the last three deals in the space paid." },
+    { eyebrow: "Cognitive bias", title: "Inside-view dominance", severity: "critical", confidence: 79, excerpt: "Our team has closed six acquisitions — this is familiar ground." },
+    { eyebrow: "Cognitive bias", title: "Overconfidence", severity: "medium", confidence: 73, excerpt: "Their revenue is growing 40% a year." },
+  ] as AuditFinding[],
+  footnote: "A representative audit. The real platform runs a multi-agent pipeline over a 22-bias taxonomy.",
+};
+
+// ─────────────────────────────────────────────────────────────────────
 // The signature interactive: a sound-looking decision you can take apart.
 // Toggle the biases hiding inside the reasoning and watch the conviction —
 // and a Decision-Quality score — come undone. This is Decision Intel in one
