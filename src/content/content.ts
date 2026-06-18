@@ -90,9 +90,17 @@ export interface LinkItem { label: string; href: string }
 export const content = {
   name: "Folahan Williams",
 
-  // §3.1 hero — the throughline, not a résumé line (no age here — it reveals later)
+  // §3.1 hero — clarity-first (a stranger should grok who/what in ~4 seconds).
   heroLine:
     "I’m fascinated by how people reason and decide — so I keep building things that put the answer under pressure.",
+  // What I'm building right now — the orienting line (Marco-style "is building X").
+  building: {
+    product: "Decision Intel",
+    href: "https://decision-intel.com",
+    what: "AI that audits the reasoning behind your biggest decisions — and catches the blind spots before the committee does.",
+  },
+  heroIntro:
+    "I’m 16, raised between Lagos and the UK. For the last few years I’ve chased one question: why do smart, well-resourced people get important calls so wrong? Everything below is me putting the answer under pressure — as a company, as research, as teaching.",
 
   // §3.2 How I think (the heaviest section). Make this truly yours.
   howIThink: {
@@ -215,10 +223,10 @@ export interface LabBias {
 }
 
 export const reasoningLab = {
-  eyebrow: "The reasoning lab",
+  eyebrow: "Decision Intel · live",
   title: "Watch a sound decision fall apart",
   intro:
-    "Here is a recommendation that looks airtight. Switch on the biases hiding inside it and watch the conviction — and the quality of the thinking — come undone. It is the thing I build, in miniature.",
+    "This is what Decision Intel does, in miniature. Here is a recommendation that looks airtight. Switch on the biases hiding inside it and watch the conviction — and the quality of the thinking — come undone.",
   decision: "Acquire our largest competitor for $420M.",
   baseScore: 84,
   scoreFloor: 19,
