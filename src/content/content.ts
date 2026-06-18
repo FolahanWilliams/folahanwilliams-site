@@ -242,6 +242,35 @@ export const crisisTimeline: CrisisEvent[] = [
   { date: "Sep 2008", label: "Lehman", detail: "Lehman files for bankruptcy and the system goes into cardiac arrest.", bias: "Overconfidence + cortisol — the desks that won biggest doubled down hardest.", drop: 78 },
 ];
 
+// ── Stage 3: availability + piano ──────────────────────────────────────
+
+// A "when I'm generally around" display — illustrative, editable, not a live
+// calendar feed. grid[day][slot] = free?  (day rows · slot cols)
+export const availability = {
+  timezone: "London · GMT/BST",
+  note: "When I'm generally reachable. Term keeps weekdays busy — evenings and weekends are best.",
+  days: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+  slots: ["Morning", "Afternoon", "Evening"],
+  grid: [
+    [false, false, true],
+    [false, false, true],
+    [false, false, true],
+    [false, false, true],
+    [false, false, true],
+    [true, true, true],
+    [false, true, true],
+  ] as boolean[][],
+};
+
+export const piano = {
+  heading: "At the piano",
+  body:
+    "Twelve years in — ABRSM Grade 6 piano, Grade 5 theory with distinction, and Grade 6 guitar on the way. [confirm exact grades] Practising something for years before you’re any good at it turns out to be the same discipline everything else here needed.",
+  // Drop a recording at public/piano.mp3 to light up the player.
+  audio: "/piano.mp3",
+  pieceLabel: "A piece I keep coming back to",
+};
+
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
   { id: "top", label: "Folahan" },

@@ -4,8 +4,7 @@ import { Section } from "@/components/Section";
 import { ReasoningLab } from "@/components/ReasoningLab";
 import { HowIThink } from "@/components/HowIThink";
 import { Work } from "@/components/Work";
-import { WhoIAm } from "@/components/WhoIAm";
-import { QuietProof } from "@/components/QuietProof";
+import { About } from "@/components/About";
 import { ReachMe } from "@/components/ReachMe";
 
 export default function Home() {
@@ -30,10 +29,9 @@ export default function Home() {
         </div>
 
         <div id="about" className="anchor">
-          <WhoIAm />
+          <About />
         </div>
 
-        <QuietProof />
         <ReachMe />
       </main>
     </>
