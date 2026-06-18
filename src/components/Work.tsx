@@ -3,6 +3,7 @@ import { content } from "@/content/content";
 import { MiniGauge } from "./widgets/MiniGauge";
 import { SignalTicker } from "./widgets/SignalTicker";
 import { CrisisTimeline } from "./widgets/CrisisTimeline";
+import { BiasTaxonomy } from "./widgets/BiasTaxonomy";
 
 // bento column spans on the 6-col desktop grid (collapse to 1 col on mobile)
 const SPAN: Record<string, number> = {
@@ -72,6 +73,10 @@ export function Work() {
             </article>
           );
         })}
+
+        <article className="bento-tile" style={{ gridColumn: "span 6" }}>
+          <BiasTaxonomy />
+        </article>
       </div>
     </Section>
   );

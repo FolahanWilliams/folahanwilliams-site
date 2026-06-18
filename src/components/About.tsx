@@ -2,6 +2,8 @@ import { Section } from "./Section";
 import { content } from "@/content/content";
 import { AvailabilityTile } from "./widgets/AvailabilityTile";
 import { PianoTile } from "./widgets/PianoTile";
+import { RecordTile } from "./widgets/RecordTile";
+import { BooksTile } from "./widgets/BooksTile";
 
 /** The human, as a small bento: the story prose, when I'm around, the piano,
  *  and quiet proof — the age reveal lives in the prose, near the bottom. */
@@ -29,6 +31,14 @@ export function About() {
 
         <article className="bento-tile" style={{ gridColumn: "span 2" }}>
           <AvailabilityTile />
+        </article>
+
+        <article className="bento-tile" style={{ gridColumn: "span 3" }}>
+          <RecordTile />
+        </article>
+
+        <article className="bento-tile" style={{ gridColumn: "span 3" }}>
+          <BooksTile />
         </article>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>

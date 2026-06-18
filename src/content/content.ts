@@ -108,7 +108,7 @@ export const content = {
     paragraphs: [
       "I was born in the United States and raised between Lagos and the UK — Lagos is home. San Francisco is where I’m headed next.",
       "I’m sixteen — which I mention here, near the bottom, rather than at the top, because I’d rather the work spoke first.",
-      "Away from the screen, I’ve played piano for twelve years: ABRSM Grade 6 piano, Grade 5 music theory with distinction, and Grade 6 guitar on the way. [confirm exact grade wording] Practising something for years before you’re any good at it turns out to be the same discipline everything else here needed.",
+      "Away from the screen, I’ve played piano for twelve years: ABRSM Grade 6 piano, Grade 6 guitar, and Grade 5 music theory with distinction. Practising something for years before you’re any good at it turns out to be the same discipline everything else here needed.",
     ],
     // §3.4 faith — lightly present: ONE honest line. Yours to keep, cut, or reword.
     valuesLine:
@@ -117,9 +117,8 @@ export const content = {
 
   // §3.5 quiet proof — understated
   proof: {
-    // [confirm] check this against the signed i-Fitness review and use its exact words
     review:
-      "Rated “Excellent” across quality of work, timekeeping, and competency in role — with, in the reviewer’s words, the curiosity and mindset for “a future career in finance and the business world.”",
+      "Rated “Excellent” across quality of work, timekeeping, work relationships, and competency in role during a finance internship — cited for math and communication, and for being receptive to feedback. Objectives signed off as fully met.",
     advisor:
       "Advised by a senior advisor who helped take Wiz to a $32B outcome.", // never named — §7
   },
@@ -270,6 +269,73 @@ export const piano = {
   audio: "/piano.mp3",
   pieceLabel: "A piece I keep coming back to",
 };
+
+// ── The record (CV), favourite reading, and the bias taxonomy ──────────
+
+export interface Role {
+  org: string;
+  title: string;
+  when: string;
+  line: string;
+}
+export const experience: Role[] = [
+  {
+    org: "Decision Intel",
+    title: "Founder & CEO",
+    when: "2025 — present",
+    line: "Shipped the platform end-to-end, solo — web app, browser extension, and a multi-stage AI pipeline that audits 22 cognitive biases and grades a decision’s quality.",
+  },
+  {
+    org: "i-Fitness Centre",
+    title: "Finance Intern",
+    when: "Jul – Aug 2025",
+    line: "Inside the finance function through a growth phase — revenue, opex, EBITDA, budgeting, forecasting, and modelling.",
+  },
+  {
+    org: "Finding Finance",
+    title: "Co-Founder",
+    when: "Ongoing",
+    line: "Built a financial-literacy curriculum from scratch and teach it — translating behavioural-economics work into hands-on lessons for younger students.",
+  },
+];
+export const education = { school: "TASIS, The American School in England", detail: "Honors Modern World History · behavioural-economics track", when: "Expected 2027" };
+export const skills = [
+  "Python", "LangGraph", "Gemini", "Prompt engineering", "Evaluation & calibration (Brier scoring)",
+  "PostgreSQL", "Supabase", "Prisma", "REST APIs", "Chrome extensions", "D3.js",
+  "Behavioural economics", "Decision-quality measurement",
+];
+
+export interface Book {
+  title: string;
+  author: string;
+  why: string;
+}
+export const books: Book[] = [
+  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", why: "The two-system model everything I build rests on." },
+  { title: "Noise", author: "Kahneman · Sibony · Sunstein", why: "Why two experts disagree — and why that variance is its own kind of error." },
+  { title: "The Psychology of Money", author: "Morgan Housel", why: "Behaviour beats spreadsheets; money is a story we tell ourselves." },
+  { title: "Dopamine Nation", author: "Anna Lembke", why: "The neuroscience of why the easy escape always wins in the moment." },
+  { title: "Changing World Order", author: "Ray Dalio", why: "Cycles repeat because the people inside them forget the last one." },
+];
+
+export interface BiasChip {
+  name: string;
+  note: string;
+}
+export const biasTaxonomy: BiasChip[] = [
+  { name: "Anchoring", note: "The first number you hear quietly sets every number after it." },
+  { name: "Confirmation", note: "You go looking for the evidence you already believe." },
+  { name: "Overconfidence", note: "Certainty that outruns the actual track record." },
+  { name: "Sunk cost", note: "Throwing good money after bad to justify the bad." },
+  { name: "Halo effect", note: "One impressive trait makes you trust all the others." },
+  { name: "Herding", note: "Safety in numbers — until everyone runs for the same exit." },
+  { name: "Loss aversion", note: "A loss hurts about twice as much as the same gain feels good." },
+  { name: "Availability", note: "What comes to mind easily feels more likely than it is." },
+  { name: "Optimism", note: "The plan assumes the best case and quietly prices out the rest." },
+  { name: "Inside view", note: "Trusting your own story over what happened to everyone like you." },
+  { name: "Narrative", note: "A clean story feels true even when the data is a mess." },
+  { name: "Status quo", note: "Doing nothing feels safe even when it’s the riskiest option." },
+];
 
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
