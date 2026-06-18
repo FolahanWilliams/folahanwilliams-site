@@ -324,3 +324,145 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) {
   .book-spine, .bias-chip { transition: none; }
 }
+
+/* ── Eyebrow (chapter label — ties sections into one story) ──────────── */
+.eyebrow {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-clay);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Hero two-column (copy left · facet wheel right) ─────────────────── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 1.4rem; }
+.hero-wheel { display: flex; justify-content: center; }
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-wheel { order: 2; }
+}
+
+/* ── Facet wheel (radial menu of the six facets) ─────────────────────── */
+.facet-wheel {
+  position: relative;
+  width: 100%;
+  max-width: 380px;
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+@media (max-width: 900px) { .facet-wheel { max-width: 318px; } }
+.facet-seg { cursor: pointer; outline: none; }
+.facet-seg path { transition: fill-opacity 200ms ease, stroke-width 200ms ease; }
+/* hub: the donut centre, holding the active facet's title + line */
+.facet-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  padding: 0 27%;
+}
+.facet-center-eyebrow {
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-ink-soft);
+  margin-bottom: 0.35rem;
+}
+.facet-center-title {
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.25rem;
+  line-height: 1.14;
+  color: var(--color-ink);
+}
+.facet-center-line {
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+  margin-top: 0.4rem;
+}
+
+/* ── How I think: two-column (prose left · drill viz right) ───────────── */
+.howi-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.howi-copy { max-width: 38rem; }
+@media (max-width: 900px) {
+  .howi-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Drill-to-the-root viz ───────────────────────────────────────────── */
+.strata {
+  background: var(--color-paper-2);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
+  padding: 1.4rem;
+}
+.strata-prompt {
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  margin: 0 0 1.1rem;
+  line-height: 1.5;
+}
+.strata-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-left: 2px dashed color-mix(in srgb, var(--color-clay) 35%, var(--color-line));
+  padding-left: 0.9rem;
+}
+.strata-row {
+  display: block;
+  width: 100%;
+  text-align: left;
+  appearance: none;
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  border-radius: 10px;
+  padding: 0.7rem 0.85rem;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--color-ink);
+}
+.strata-row:hover,
+.strata-row[data-open="true"] {
+  border-color: color-mix(in srgb, var(--color-clay) 45%, var(--color-line));
+}
+.strata-row[data-open="true"] {
+  box-shadow: 0 10px 26px -20px color-mix(in srgb, var(--color-ink) 60%, transparent);
+}
+.strata-row[data-root="true"] { border-left: 3px solid var(--color-clay); }
+.strata-row[data-root="true"][data-open="true"] {
+  background: color-mix(in srgb, var(--color-clay) 7%, var(--color-paper));
+}
+.strata-head { display: flex; flex-direction: column; gap: 2px; }
+.strata-depth {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-clay);
+}
+.strata-label { font-size: 0.98rem; font-weight: 600; color: var(--color-ink); }
+.strata-text { margin: 0.55rem 0 0; font-size: 0.94rem; line-height: 1.5; color: var(--color-ink-soft); }
+.strata-payoff {
+  margin: 1.2rem 0 0;
+  font-family: var(--font-display), Georgia, serif;
+  font-size: 1.02rem;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .strata-row { transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease; }
+}

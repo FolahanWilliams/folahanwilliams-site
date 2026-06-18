@@ -207,6 +207,49 @@ export const content = {
 } as const;
 
 // ─────────────────────────────────────────────────────────────────────
+// The hero wheel — six facets of the same obsession, as a radial menu.
+// Each is a verb (the wheel label), a full title + line (shown in the centre
+// on hover/focus), an in-page anchor, and a warm earth-tone. The FacetWheel
+// component is purely a renderer; edit the world here.
+// ─────────────────────────────────────────────────────────────────────
+export interface Facet {
+  verb: string;   // short label drawn on the wheel slice
+  title: string;  // full name shown in the centre
+  line: string;   // one line shown in the centre on hover/focus
+  href: string;   // in-page anchor (or external)
+  color: string;  // slice fill (white text sits on top)
+}
+export const facets: Facet[] = [
+  { verb: "Build", title: "Decision Intel", line: "AI that audits the reasoning behind high-stakes decisions.", href: "#lab", color: "#b5532a" },
+  { verb: "Ship", title: "Side builds", line: "Sentinel and other systems I ship in my spare time — usually solo.", href: "#work", color: "#c07f2f" },
+  { verb: "Research", title: "The 2008 crisis", line: "A published paper tracing the crash to its cognitive roots.", href: "#work", color: "#6f7d4a" },
+  { verb: "Teach", title: "Finding Finance", line: "Teaching younger students how money — and bias — really work.", href: "#work", color: "#3f7d62" },
+  { verb: "Read", title: "What I'm reading", line: "Kahneman, Housel, Dalio — the shelf everything rests on.", href: "#about", color: "#a85a6b" },
+  { verb: "Play", title: "At the piano", line: "Twelve years in. The same discipline as everything else here.", href: "#about", color: "#9c6b3f" },
+];
+
+// ─────────────────────────────────────────────────────────────────────
+// "How I think" viz — drill a confident decision down to its root. Each layer
+// peels back toward where the real error lives: the assumption nobody checked.
+// The deepest layer is the point of the whole section.
+// ─────────────────────────────────────────────────────────────────────
+export interface ThoughtLayer {
+  depth: string; // where you are in the drill ("what everyone sees" … "the root")
+  label: string; // the layer's name
+  text: string;  // revealed when the layer is opened
+}
+export const thinkingLayers = {
+  prompt: "A confident decision, drilled to its root. The expensive mistake is rarely at the surface.",
+  layers: [
+    { depth: "What everyone sees", label: "The outcome", text: "The acquisition lost $180M." },
+    { depth: "One layer down", label: "The decision", text: "We bought our largest competitor for $420M." },
+    { depth: "Deeper", label: "The reasoning", text: "Their 40% growth would hold, and the price matched the last three deals." },
+    { depth: "The root", label: "The assumption nobody checked", text: "That the future would look like the recent past." },
+  ] as ThoughtLayer[],
+  payoff: "The mistake was already in the thinking — long before it showed up in the result.",
+};
+
+// ─────────────────────────────────────────────────────────────────────
 // The signature interactive: a sound-looking decision you can take apart.
 // Toggle the biases hiding inside the reasoning and watch the conviction —
 // and a Decision-Quality score — come undone. This is Decision Intel in one
