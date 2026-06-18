@@ -1,3 +1,60 @@
+// ─────────────────────────────────────────────────────────────────────
+// SEO / AEO — the machine-readable layer. Update `siteUrl` the moment a
+// custom domain (e.g. folahanwilliams.com) is connected; everything derives.
+// ─────────────────────────────────────────────────────────────────────
+export const seo = {
+  // [update when the custom domain lands — this is the single source]
+  siteUrl: "https://folahanwilliams-site.vercel.app",
+  title: "Folahan Williams — Founder of Decision Intel",
+  tagline: "16-year-old founder building AI that audits the reasoning behind decisions",
+  description:
+    "Folahan Williams is a 16-year-old founder and the creator of Decision Intel, an AI platform that audits the reasoning behind high-stakes decisions — pairing behavioral-economics research with full-stack execution.",
+  keywords: [
+    "Folahan Williams",
+    "Folahan Williams founder",
+    "Folahan Williams Decision Intel",
+    "Decision Intel",
+    "Decision Intel founder",
+    "reasoning audit platform",
+    "cognitive bias AI",
+    "decision quality index",
+    "behavioral economics founder",
+    "young AI founder",
+  ],
+  // Authoritative profiles for entity resolution (sameAs). Add LinkedIn + X
+  // once the exact URLs are known — keep only valid absolute URLs here.
+  sameAs: ["https://github.com/FolahanWilliams", "https://decision-intel.com"],
+  jobTitle: "Founder & CEO, Decision Intel",
+  knowsAbout: [
+    "Behavioral economics",
+    "Decision quality",
+    "Cognitive bias",
+    "Artificial intelligence",
+    "Behavioral finance",
+    "Metacognition",
+  ],
+  alumniOf: "TASIS The American School in England",
+  // Crawlable + cited by AI answer engines. Crisp, factual, quotable.
+  faqs: [
+    {
+      q: "Who is Folahan Williams?",
+      a: "Folahan Williams is a 16-year-old founder and the creator of Decision Intel, an AI platform that audits the reasoning behind high-stakes decisions. Born in the United States and raised between Lagos and the UK, he works at the intersection of behavioral economics, decision quality, and software.",
+    },
+    {
+      q: "What is Decision Intel?",
+      a: "Decision Intel is a reasoning-audit platform founded by Folahan Williams. It reads strategic memos and surfaces the cognitive biases and weak assumptions in the reasoning before a decision is made, grading decision quality on logic, evidence, and bias resistance.",
+    },
+    {
+      q: "What is Folahan Williams known for?",
+      a: "Founding Decision Intel; published research on the cognitive roots of the 2008 financial crisis; co-founding Finding Finance, a student-led financial-literacy initiative; and a TED-style talk on metacognition.",
+    },
+    {
+      q: "How can I contact Folahan Williams?",
+      a: "By email at folahanwilliams@gmail.com, or through the GitHub, LinkedIn, and Decision Intel links on his website.",
+    },
+  ],
+} as const;
+
 export interface WorkItem {
   key: string;
   title: string;

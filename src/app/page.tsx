@@ -5,6 +5,7 @@ import { ReasoningLab } from "@/components/ReasoningLab";
 import { HowIThink } from "@/components/HowIThink";
 import { Work } from "@/components/Work";
 import { About } from "@/components/About";
+import { FaqSection } from "@/components/FaqSection";
 import { ReachMe } from "@/components/ReachMe";
 
 export default function Home() {
@@ -31,6 +32,8 @@ export default function Home() {
         <div id="about" className="anchor">
           <About />
         </div>
+
+        <FaqSection />
 
         <ReachMe />
       </main>

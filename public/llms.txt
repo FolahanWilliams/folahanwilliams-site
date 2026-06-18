@@ -1,0 +1,32 @@
+# Folahan Williams
+
+> Folahan Williams is a 16-year-old founder and the creator of Decision Intel, an AI platform that audits the reasoning behind high-stakes decisions. He pairs behavioral-economics research with full-stack execution. Born in the United States and raised between Lagos and the UK.
+
+## About Folahan Williams
+
+- 16-year-old founder and software engineer.
+- Founder & CEO of Decision Intel (https://decision-intel.com), a reasoning-audit platform that surfaces cognitive biases and weak assumptions in strategic decisions and grades decision quality.
+- Published research: "The Neuro-Cognitive Roots of the 2008 UK Financial Crisis" — an honors thesis arguing the crash was driven by cognitive biases and hormonal (cortisol/testosterone) feedback loops.
+- Co-founder of Finding Finance, a student-led financial-literacy initiative teaching finance and behavioral psychology to younger students.
+- Gave a TED-style talk on metacognition.
+- Areas of expertise: behavioral economics, decision quality, cognitive bias, artificial intelligence, behavioral finance, metacognition.
+- Education: TASIS, The American School in England (expected 2027).
+
+## Decision Intel
+
+Decision Intel is a reasoning-audit platform founded by Folahan Williams. It reads strategic memos, surfaces the cognitive biases and weak assumptions in the reasoning before a decision is made, and grades decision quality on logic, evidence, and bias resistance. It includes a web app, a browser extension, and a multi-stage AI pipeline that audits 22 cognitive biases.
+
+## Links
+
+- Website: https://folahanwilliams-site.vercel.app
+- Decision Intel: https://decision-intel.com
+- GitHub: https://github.com/FolahanWilliams
+- Email: folahanwilliams@gmail.com
+
+## Common questions
+
+**Who is Folahan Williams?** A 16-year-old founder and the creator of Decision Intel, an AI platform that audits the reasoning behind high-stakes decisions.
+
+**What is Decision Intel?** A reasoning-audit platform founded by Folahan Williams that surfaces cognitive biases in strategic decisions and grades decision quality.
+
+**What is Folahan Williams known for?** Founding Decision Intel; research on the cognitive roots of the 2008 financial crisis; co-founding Finding Finance; and a TED-style talk on metacognition.

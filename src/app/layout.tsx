@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Inter } from "next/font/google";
-import { content } from "@/content/content";
+import { seo } from "@/content/content";
+import { StructuredData } from "@/components/StructuredData";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -19,15 +20,51 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://folahanwilliams.vercel.app"),
-  title: "Folahan Williams",
-  description: content.heroLine.replace(/\s*\[DRAFT[^\]]*\]/g, ""), // marker-agnostic strip
-  openGraph: { title: "Folahan Williams", description: "How people think and decide.", type: "website" },
+  metadataBase: new URL(seo.siteUrl),
+  title: {
+    default: seo.title,
+    template: "%s · Folahan Williams",
+  },
+  description: seo.description,
+  keywords: [...seo.keywords],
+  applicationName: "Folahan Williams",
+  authors: [{ name: "Folahan Williams", url: seo.siteUrl }],
+  creator: "Folahan Williams",
+  publisher: "Folahan Williams",
+  category: "technology",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "profile",
+    url: seo.siteUrl,
+    siteName: "Folahan Williams",
+    title: seo.title,
+    description: seo.description,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: seo.title,
+    description: seo.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+      <head>
+        <StructuredData />
+      </head>
       <body>{children}</body>
     </html>
   );
