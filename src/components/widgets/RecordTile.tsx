@@ -1,6 +1,6 @@
-import { experience, education, skills, content } from "@/content/content";
+import { experience, education, skills } from "@/content/content";
 
-/** The record — experience, education, skills, and the CV download. */
+/** The record — experience, education, and skills. */
 export function RecordTile() {
   return (
     <div>
@@ -34,10 +34,6 @@ export function RecordTile() {
           </span>
         ))}
       </div>
-
-      <a href={content.cv} target="_blank" rel="noopener noreferrer" style={{ display: "inline-block", marginTop: "1.1rem", fontSize: "0.92rem" }}>
-        Download CV (PDF) →
-      </a>
     </div>
   );
 }

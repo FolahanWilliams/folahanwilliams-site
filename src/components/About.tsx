@@ -40,12 +40,15 @@ export function About() {
           <RecordTile />
         </article>
 
-        <article className="bento-tile" style={{ gridColumn: "span 3" }}>
-          <BooksTile />
-          {/* the journey fills the space beside the (taller) record column */}
-          <div style={{ height: 1, background: "var(--color-line)", margin: "1.5rem 0" }} />
-          <FlightTile />
-        </article>
+        {/* right column beside the taller record: two separate panels stacked */}
+        <div className="bento-stack">
+          <article className="bento-tile">
+            <BooksTile />
+          </article>
+          <article className="bento-tile">
+            <FlightTile />
+          </article>
+        </div>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>
           <PianoTile />
