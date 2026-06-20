@@ -625,6 +625,22 @@ export const reachAudit = {
   footnote: "The lowest-risk decision on this page.",
 };
 
+// ─────────────────────────────────────────────────────────────────────
+// Faith: a quiet, honest panel — the foundation under the work, lightly held.
+// The verse ties to the whole site's thread (don't lean on your own reasoning);
+// [confirm] swap it for the verse that means the most to you.
+// ─────────────────────────────────────────────────────────────────────
+export const faith = {
+  eyebrow: "The foundation",
+  heading: "Faith",
+  body:
+    "I’m a Christian. It’s the quiet foundation under all of this — the reason I care about building things that are honest, not just clever, and the thing that keeps the work in proportion whether it’s going well or it isn’t.",
+  verse: {
+    text: "Trust in the Lord with all your heart, and lean not on your own understanding.",
+    ref: "Proverbs 3:5",
+  },
+};
+
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
   { id: "top", label: "Folahan" },

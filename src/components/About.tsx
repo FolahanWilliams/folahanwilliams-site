@@ -7,11 +7,12 @@ import { GymTile } from "./widgets/GymTile";
 import { RecordTile } from "./widgets/RecordTile";
 import { BooksTile } from "./widgets/BooksTile";
 import { FlightTile } from "./widgets/FlightTile";
+import { FaithTile } from "./widgets/FaithTile";
 
 /** The human, as a small bento: the story prose, when I'm around, the piano,
  *  and quiet proof — the age reveal lives in the prose, near the bottom. */
 export function About() {
-  const { heading, paragraphs, valuesLine } = content.whoIAm;
+  const { heading, paragraphs } = content.whoIAm;
   return (
     <Section>
       <h2 style={{ fontSize: "clamp(1.7rem, 4vw, 2.3rem)", marginBottom: "1.5rem" }}>{heading}</h2>
@@ -25,11 +26,6 @@ export function About() {
               </p>
             ))}
           </div>
-          {valuesLine && (
-            <p style={{ marginTop: "1.4rem", marginBottom: 0, color: "var(--color-ink-soft)", fontStyle: "italic", lineHeight: 1.6 }}>
-              {valuesLine}
-            </p>
-          )}
         </article>
 
         <article className="bento-tile" style={{ gridColumn: "span 2" }}>
@@ -69,6 +65,10 @@ export function About() {
           <p style={{ fontFamily: "var(--font-display), serif", fontSize: "1.25rem", lineHeight: 1.4, margin: 0 }}>
             {content.proof.review}
           </p>
+        </article>
+
+        <article className="bento-tile faith-tile" style={{ gridColumn: "span 6" }}>
+          <FaithTile />
         </article>
       </div>
     </Section>
