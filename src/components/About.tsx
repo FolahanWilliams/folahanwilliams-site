@@ -6,6 +6,7 @@ import { GuitarTile } from "./widgets/GuitarTile";
 import { GymTile } from "./widgets/GymTile";
 import { RecordTile } from "./widgets/RecordTile";
 import { BooksTile } from "./widgets/BooksTile";
+import { FlightTile } from "./widgets/FlightTile";
 
 /** The human, as a small bento: the story prose, when I'm around, the piano,
  *  and quiet proof — the age reveal lives in the prose, near the bottom. */
@@ -41,6 +42,9 @@ export function About() {
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>
           <BooksTile />
+          {/* the journey fills the space beside the (taller) record column */}
+          <div style={{ height: 1, background: "var(--color-line)", margin: "1.5rem 0" }} />
+          <FlightTile />
         </article>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>

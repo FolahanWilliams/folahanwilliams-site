@@ -397,6 +397,59 @@ html { overflow-x: clip; }
   .book-spine, .bias-chip { transition: none; }
 }
 
+/* ── Journey flight (About: U.S. → Lagos → London) ──────────────────────
+   The plane itself flies via SMIL <animateMotion>; these handle the dotted
+   contrail drifting toward London and the arrival "ping" at each city. All of
+   it is gated behind motion-safe — under reduced motion the global rule below
+   stops every animation, leaving a clean static map with the plane at rest. */
+.flight-route { stroke-dasharray: 1 7; stroke-linecap: round; }
+.flight-ping { transform-box: fill-box; transform-origin: center; opacity: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .flight-route { animation: flight-drift 1.5s linear infinite; }
+  .flight-ping { animation: flight-ping 7s ease-out infinite; }
+  .flight-ping-1 { animation-delay: 0s; }
+  .flight-ping-2 { animation-delay: 3.3s; }   /* plane reaches Lagos */
+  .flight-ping-3 { animation-delay: 6.05s; }  /* plane reaches London */
+}
+@keyframes flight-drift { to { stroke-dashoffset: -16; } }
+@keyframes flight-ping {
+  0%   { transform: scale(0.6); opacity: 0.5; }
+  3%   { opacity: 0.5; }
+  16%  { transform: scale(3); opacity: 0; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* ── Reach audit (the contact section, as a Decision-Quality audit) ──────── */
+.reach-audit {
+  border: 1px solid var(--color-line);
+  border-left: 3px solid var(--color-clay);
+  background: var(--color-paper-2);
+  border-radius: 16px;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  max-width: 44rem;
+}
+.reach-memo {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-top: 0.8rem;
+  padding: 0.6rem 0.85rem;
+  background: var(--color-paper);
+  border: 1px solid var(--color-line);
+  border-radius: 10px;
+}
+.reach-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: clamp(1.2rem, 4vw, 2.2rem);
+  align-items: center;
+  margin-top: 1.3rem;
+}
+.reach-signal { display: flex; align-items: center; gap: 0.6rem; padding: 0.3rem 0; }
+@media (max-width: 560px) {
+  .reach-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+
 /* ── Eyebrow (chapter label — ties sections into one story) ──────────── */
 .eyebrow {
   font-size: 0.72rem;

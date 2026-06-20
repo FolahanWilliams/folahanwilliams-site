@@ -1,15 +1,19 @@
 import { Section } from "./Section";
 import { content } from "@/content/content";
+import { ReachAudit } from "./widgets/ReachAudit";
 
 export function ReachMe() {
   return (
     <Section measure className="">
       <div id="reach" style={{ scrollMarginTop: "2rem" }}>
-        <h2 style={{ fontSize: "clamp(1.7rem, 4vw, 2.3rem)", marginBottom: "1rem" }}>Get in touch</h2>
-        <p style={{ marginBottom: "1.5rem", color: "var(--color-ink-soft)", maxWidth: "32rem" }}>
-          If any of this resonates, I&rsquo;d love to talk.
+        <h2 style={{ fontSize: "clamp(1.7rem, 4vw, 2.3rem)", marginBottom: "0.75rem" }}>Get in touch</h2>
+        <p style={{ marginBottom: "1.75rem", color: "var(--color-ink-soft)", maxWidth: "32rem" }}>
+          If any of this resonates, I&rsquo;d love to talk. Naturally, I ran the decision through my own auditor first.
         </p>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.9rem", alignItems: "center" }}>
+
+        <ReachAudit />
+
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.9rem", alignItems: "center", marginTop: "1.75rem" }}>
           <a
             href={content.calendly}
             target="_blank"

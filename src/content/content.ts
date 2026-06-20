@@ -584,6 +584,47 @@ export const biasTaxonomy: BiasChip[] = [
   { name: "Status quo", note: "Doing nothing feels safe even when it’s the riskiest option." },
 ];
 
+// ─────────────────────────────────────────────────────────────────────
+// The journey: born in the U.S., raised in Lagos, building from London.
+// Rendered in the About bento as a looping flight along a great-circle route
+// (the FlightTile is a pure renderer — geometry below, motion in globals.css).
+// viewBox is 0 0 300 160; the plane flies `path`, pinging each stop on arrival.
+// ─────────────────────────────────────────────────────────────────────
+export interface JourneyStop { id: string; label: string; role: string; x: number; y: number }
+export const journey = {
+  eyebrow: "Where I’m from",
+  heading: "The long way here",
+  caption:
+    "Born in the U.S., raised in Lagos, building from London — San Francisco next.",
+  path: "M38,64 C70,28 118,70 150,120 C182,86 224,40 258,50",
+  stops: [
+    { id: "us", label: "U.S.", role: "born", x: 38, y: 64 },
+    { id: "ng", label: "Lagos", role: "home", x: 150, y: 120 },
+    { id: "uk", label: "London", role: "now", x: 258, y: 50 },
+  ] as JourneyStop[],
+};
+
+// ─────────────────────────────────────────────────────────────────────
+// "Get in touch", on-brand: the decision to reach out, run through the same
+// reasoning audit as everything else here — except this one scores an A.
+// The signal weights sum to the score (24+22+28+22 = 96). A wink, not a metric.
+// ─────────────────────────────────────────────────────────────────────
+export interface ReachSignal { label: string; weight: number }
+export const reachAudit = {
+  eyebrow: "One last audit",
+  memoTag: "Decision",
+  memo: "Reach out to Folahan.",
+  score: 96,
+  verdict: "Proceed. High conviction.",
+  signals: [
+    { label: "Replies within a day", weight: 24 },
+    { label: "Actually ships what he talks about", weight: 22 },
+    { label: "A free 30-minute slot this week", weight: 28 },
+    { label: "No pitch required", weight: 22 },
+  ] as ReachSignal[],
+  footnote: "The lowest-risk decision on this page.",
+};
+
 // Floating-nav sections (anchor ids on the page).
 export const navSections = [
   { id: "top", label: "Folahan" },
