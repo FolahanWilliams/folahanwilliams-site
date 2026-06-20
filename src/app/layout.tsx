@@ -57,6 +57,15 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
+  // Search Console / Bing Webmaster verification. Paste the token from each
+  // console into these env vars (e.g. in Vercel → Project → Settings → Env).
+  // Left undefined, nothing renders — so no broken/empty tags ship.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : {},
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

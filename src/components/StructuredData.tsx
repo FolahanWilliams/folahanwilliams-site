@@ -1,5 +1,8 @@
 import { seo, content, experience, education } from "@/content/content";
 
+// The published 2008 paper, pulled from the work list so its URL stays in sync.
+const thesis = content.work.find((w) => w.key === "thesis-2008");
+
 /**
  * JSON-LD structured data — the machine-readable layer that drives Google
  * Knowledge Panels and is parsed/cited by AI answer engines (ChatGPT,
@@ -10,7 +13,7 @@ export function StructuredData() {
   const personId = `${seo.siteUrl}/#folahan`;
   const orgId = "https://decision-intel.com/#org";
 
-  const graph = [
+  const graph: Record<string, unknown>[] = [
     {
       "@type": "Person",
       "@id": personId,
@@ -23,7 +26,11 @@ export function StructuredData() {
       founder: { "@id": orgId },
       alumniOf: { "@type": "EducationalOrganization", name: education.school },
       knowsAbout: [...seo.knowsAbout],
+      gender: "Male",
+      email: `mailto:${content.contactEmail}`,
       nationality: { "@type": "Country", name: "United States" },
+      birthPlace: { "@type": "Place", name: "United States" },
+      homeLocation: { "@type": "Place", name: "London, United Kingdom" },
       sameAs: [...seo.sameAs],
     },
     {
@@ -61,6 +68,23 @@ export function StructuredData() {
       })),
     },
   ];
+
+  // The published research, as a standalone authored work that links back to
+  // the Person. Concrete works are some of the strongest entity signals an
+  // answer engine can cite ("What has Folahan Williams published?").
+  if (thesis) {
+    graph.push({
+      "@type": "ScholarlyArticle",
+      "@id": `${seo.siteUrl}/#thesis-2008`,
+      headline: thesis.title,
+      name: thesis.title,
+      url: thesis.href,
+      abstract: thesis.body,
+      author: { "@id": personId },
+      about: ["Behavioral economics", "Cognitive bias", "2008 financial crisis"],
+      inLanguage: "en",
+    });
+  }
 
   // Surface the experience as concrete dated roles too (more entity signal).
   const personNode = graph[0] as Record<string, unknown>;
