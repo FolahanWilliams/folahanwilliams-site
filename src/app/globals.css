@@ -513,6 +513,44 @@ html { overflow-x: clip; }
   .reach-channels { grid-template-columns: 1fr; }
 }
 
+/* tighten the Work → "Who I am" transition into one clean cut (overrides the
+   inline section padding, which is why these need !important) */
+.section-flush-bottom { padding-bottom: clamp(1.75rem, 4vw, 2.75rem) !important; }
+.section-flush-top { padding-top: clamp(1.75rem, 4vw, 2.75rem) !important; }
+
+/* ── Faith panel (the quiet closing note of About) ──────────────────────── */
+.faith-tile { padding: clamp(1.8rem, 5vw, 3rem) 1.5rem; }
+.faith-inner {
+  max-width: 44rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.faith-mark { color: var(--color-clay); opacity: 0.85; margin-bottom: 0.7rem; }
+.faith-verse {
+  margin: 1.5rem 0 0;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-line);
+  max-width: 34rem;
+  font-family: var(--font-display), Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.1rem, 2.6vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--color-ink);
+}
+.faith-ref {
+  display: block;
+  margin-top: 0.7rem;
+  font-style: normal;
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-clay);
+}
+
 /* ── Eyebrow (chapter label — ties sections into one story) ──────────── */
 .eyebrow {
   font-size: 0.72rem;
