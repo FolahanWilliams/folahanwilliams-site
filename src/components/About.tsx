@@ -59,10 +59,9 @@ export function About() {
           <div style={{ fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--color-clay)", marginBottom: "0.8rem" }}>
             Quiet proof
           </div>
-          <p style={{ fontFamily: "var(--font-display), serif", fontSize: "1.25rem", lineHeight: 1.4, margin: "0 0 1rem" }}>
+          <p style={{ fontFamily: "var(--font-display), serif", fontSize: "1.25rem", lineHeight: 1.4, margin: 0 }}>
             {content.proof.review}
           </p>
-          <p style={{ color: "var(--color-ink-soft)", margin: 0, fontSize: "0.95rem" }}>{content.proof.advisor}</p>
         </article>
       </div>
     </Section>

@@ -8,7 +8,6 @@ export function QuietProof() {
         <p style={{ fontFamily: "var(--font-display), Georgia, serif", fontSize: "1.35rem", lineHeight: 1.4, margin: 0 }}>
           {content.proof.review}
         </p>
-        <p style={{ color: "var(--color-ink-soft)", margin: 0 }}>{content.proof.advisor}</p>
       </div>
     </Section>
   );
