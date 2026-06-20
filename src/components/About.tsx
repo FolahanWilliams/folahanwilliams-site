@@ -14,7 +14,7 @@ import { FaithTile } from "./widgets/FaithTile";
 export function About() {
   const { heading, paragraphs } = content.whoIAm;
   return (
-    <Section>
+    <Section className="section-flush-top">
       <h2 style={{ fontSize: "clamp(1.7rem, 4vw, 2.3rem)", marginBottom: "1.5rem" }}>{heading}</h2>
 
       <div className="bento">

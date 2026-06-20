@@ -513,6 +513,11 @@ html { overflow-x: clip; }
   .reach-channels { grid-template-columns: 1fr; }
 }
 
+/* tighten the Work → "Who I am" transition into one clean cut (overrides the
+   inline section padding, which is why these need !important) */
+.section-flush-bottom { padding-bottom: clamp(1.75rem, 4vw, 2.75rem) !important; }
+.section-flush-top { padding-top: clamp(1.75rem, 4vw, 2.75rem) !important; }
+
 /* ── Faith panel (the quiet closing note of About) ──────────────────────── */
 .faith-tile { padding: clamp(1.8rem, 5vw, 3rem) 1.5rem; }
 .faith-inner {
