@@ -202,7 +202,6 @@ export const content = {
     { label: "GitHub", href: "https://github.com/FolahanWilliams" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/folahan-williams-13a7b03a2/" },
     { label: "Decision Intel", href: "https://decision-intel.com" },
-    { label: "Nexus Tracker", href: "https://github.com/FolahanWilliams/nexus-tracker" }, // [confirm target]
   ] as LinkItem[],
   cv: "/cv.pdf",
 } as const;
@@ -612,6 +611,7 @@ export const journey = {
 export interface ReachSignal { label: string; weight: number }
 export const reachAudit = {
   eyebrow: "One last audit",
+  product: { label: "Decision Intel", href: "https://decision-intel.com" },
   memoTag: "Decision",
   memo: "Reach out to Folahan.",
   score: 96,

@@ -19,21 +19,17 @@ export function ReachAudit() {
   const reduce = useReducedMotion() ?? false;
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.45 });
-  const { eyebrow, memoTag, memo, score, verdict, signals, footnote } = reachAudit;
+  const { eyebrow, product, memoTag, memo, score, verdict, signals, footnote } = reachAudit;
 
   // Count the score up (and, with it, fill the gauge arc) once in view.
   const [shown, setShown] = useState(reduce ? score : 0);
   useEffect(() => {
     if (!inView) return;
-    if (reduce) {
-      setShown(score);
-      return;
-    }
     let raf = 0;
     const start = performance.now();
-    const dur = 1100;
+    const dur = reduce ? 0 : 1100; // reduced motion: land on the value at once
     const tick = (t: number) => {
-      const p = Math.min(1, (t - start) / dur);
+      const p = dur <= 0 ? 1 : Math.min(1, (t - start) / dur);
       const eased = 1 - Math.pow(1 - p, 3);
       setShown(Math.round(eased * score));
       if (p < 1) raf = requestAnimationFrame(tick);
@@ -52,8 +48,19 @@ export function ReachAudit() {
 
   return (
     <div ref={ref} className="reach-audit">
-      <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-clay)", fontWeight: 700 }}>
-        {eyebrow}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.75rem" }}>
+        <div style={{ fontSize: "0.7rem", textTransform: "uppercase", letterSpacing: "0.12em", color: "var(--color-clay)", fontWeight: 700 }}>
+          {eyebrow}
+        </div>
+        <a
+          href={product.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ display: "inline-flex", alignItems: "center", gap: "0.3rem", fontSize: "0.72rem", fontWeight: 600, color: "var(--color-ink-soft)" }}
+        >
+          <span style={{ width: 6, height: 6, borderRadius: 999, background: GREEN, display: "inline-block" }} />
+          Audited by {product.label} ↗
+        </a>
       </div>
 
       <div className="reach-memo">

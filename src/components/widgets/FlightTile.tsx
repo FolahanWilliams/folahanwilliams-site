@@ -3,9 +3,12 @@
 import { useReducedMotion } from "framer-motion";
 import { journey } from "@/content/content";
 
-// A small paper-plane silhouette, tip pointing along +x so SMIL rotate="auto"
-// keeps it banked into the flight path as it flies.
-const PLANE = "M9,0 L-7,-5.5 L-2.5,0 L-7,5.5 Z";
+// A top-down airliner silhouette — swept wings, fuselage, tailplane — drawn
+// nose-first along +x so SMIL rotate="auto" banks it into every turn it flies.
+const PLANE =
+  "M12,0 L4,-1.3 L3.5,-1.3 L-1,-9 L-3,-8.4 L-1,-2 L-7,-1.4 L-9,-5 L-10.5,-4.6 " +
+  "L-9.5,-1 L-11,0 L-9.5,1 L-10.5,4.6 L-9,5 L-7,1.4 L-1,2 L-3,8.4 L-1,9 " +
+  "L3.5,1.3 L4,1.3 Z";
 
 /**
  * The journey — U.S. → Lagos → London — as a looping flight along a
@@ -59,11 +62,11 @@ export function FlightTile() {
         {/* the plane */}
         {reduce ? (
           <g transform={`translate(${end.x},${end.y}) rotate(16)`}>
-            <path d={PLANE} fill="var(--color-clay)" />
+            <path d={PLANE} transform="scale(0.82)" fill="var(--color-clay)" />
           </g>
         ) : (
           <g>
-            <path d={PLANE} fill="var(--color-clay)" />
+            <path d={PLANE} transform="scale(0.82)" fill="var(--color-clay)" />
             <animateMotion
               dur="7s"
               repeatCount="indefinite"
