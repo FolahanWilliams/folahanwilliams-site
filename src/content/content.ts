@@ -641,11 +641,290 @@ export const faith = {
   },
 };
 
-// Floating-nav sections (anchor ids on the page).
+// Floating-nav sections (anchor ids on the home page). `short` is the label
+// used on narrow phones so the whole pill fits without sideways scrolling.
 export const navSections = [
-  { id: "top", label: "Folahan" },
-  { id: "lab", label: "Decision Intel" },
-  { id: "work", label: "Work" },
-  { id: "about", label: "About" },
-  { id: "reach", label: "Contact" },
+  { id: "top", label: "Folahan", short: "Home" },
+  { id: "lab", label: "Decision Intel", short: "DI" },
+  { id: "work", label: "Work", short: "Work" },
+  { id: "about", label: "About", short: "About" },
+  { id: "reach", label: "Contact", short: "Contact" },
 ] as const;
+
+// Separate pages in the same pill (after a hairline divider).
+export const navPages = [
+  { href: "/portfolio", label: "Portfolio", short: "Portfolio" },
+] as const;
+
+// ─────────────────────────────────────────────────────────────────────
+// /portfolio: the proof-of-work page (the link for applications).
+//
+// WHO READS THIS: admissions readers at The Academy (and people like them).
+// They weigh "proof of work" and "agency", read fast, and are not engineers,
+// so every project answers the same four questions the application asks, in
+// plain words: what I built, the hard part, what I learned, where it stands.
+//
+// ⚠ DRAFT COPY. The Academy's FAQ says: "Do not use AI to write for you;
+// write your own story in your own words." Every sentence below is a
+// fact-checked starting point (sources: the project repos + live sites),
+// NOT final text. Rewrite each one in your own voice before you submit.
+// Facts you still need to add are marked [add …].
+//
+// Order here = order on the page. Each `visual` picks an on-brand
+// illustration; set `image` (a file in public/) to show a real screenshot.
+// ─────────────────────────────────────────────────────────────────────
+export interface PortfolioStat { value: string; label: string }
+export type PortfolioVisual = "decision-intel" | "sentinel" | "sankore" | "nexus";
+export interface PortfolioProject {
+  key: string;          // anchor id: /portfolio#key
+  kicker: string;       // what kind of thing this is
+  name: string;
+  aka?: string;         // a second name it goes by
+  role: string;
+  when: string;
+  status: string;       // short, honest state: "Live", "Shipped", …
+  summary: string;      // one plain sentence a non-engineer gets instantly
+  built: string[];      // what I personally built
+  hard: string;         // the hardest part, and what I did about it
+  learned: string;      // what I learned
+  result: string;       // where it stands: results, traction, honestly
+  stats: PortfolioStat[];
+  tools: string[];      // kept short and plain, shown quietly
+  links: LinkItem[];
+  visual: PortfolioVisual;
+  visualCaption: string;
+  image?: { src: string; alt: string };
+  bet: { downside: string; upside: string }; // the asymmetric bet it was
+}
+
+export const portfolio = {
+  seo: {
+    title: "Portfolio",
+    description:
+      "How Folahan Williams thinks, and what he has built: Decision Intel, Sentinel, a portfolio dashboard for Sankore, Nexus, and an AI workshop for women in business in London. For each, what he built, the hard part, what he learned, and the bet he was making.",
+  },
+  eyebrow: "Portfolio",
+  heading: "How I think, and what I’ve built",
+  intro: [
+    "I’m Folahan. I’m 16, I grew up between Lagos and the UK, and I finish school at TASIS in England in 2027.",
+    "Most portfolios are a list of wins. I’d rather start with the one idea I use to decide what to work on, then show you the bets it led to: my startup, two projects I built for myself, a tool I built for a fund during my internship, and a workshop I taught in London.",
+  ],
+  howIBuild: {
+    heading: "How I build",
+    body:
+      "Everything on this page I built solo: no co-founder, no team. I use AI coding tools (mostly Claude Code) for a lot of the typing, which is why Claude shows up on many of my GitHub commits. The parts that are mine: choosing what to build and who it’s for, writing the plans, making the calls when something breaks, and checking the result against reality.",
+  },
+  labels: {
+    built: "What I built",
+    hard: "The hard part",
+    learned: "What I learned",
+    result: "Where it stands",
+    bet: "The bet",
+    downside: "Worst case",
+    upside: "Best case",
+  },
+  // The differentiator: not what I've done, but how I decide what to do.
+  philosophy: {
+    eyebrow: "The philosophy I live by",
+    heading: "Capped downside, uncapped upside",
+    source: { title: "Rule Breaker Investing", author: "David Gardner" },
+    // Paste the exact line from the book here and it shows as a pull-quote
+    // (quote marks are only ever put around Gardner's real words).
+    quote: "",
+    body: [
+      "The idea comes from David Gardner’s Rule Breaker Investing. The most a stock can ever fall is 100%, down to zero. How far it can rise has no ceiling. So the losses on your worst bets are capped, and the gains on your best ones aren’t.",
+      "I use the same maths outside the market. When an opportunity comes up, I look at two things: how bad the worst case really is, and whether the best case has a ceiling. When the downside is small and the upside is open-ended, I take it.",
+      "I won’t win on accolades, and a list of them wouldn’t tell you much anyway. So under every project below, I’ve written down the bet I was making.",
+    ],
+    vision: {
+      heading: "Where it points",
+      body:
+        "The thread through all of it is how people reason and decide. The biggest bet I’m making is Decision Intel: a world where no decision worth hundreds of millions gets made without someone checking the reasoning first.",
+    },
+    chart: {
+      down: "Worst case: −100%. It stops at zero.",
+      up: "Best case: no ceiling.",
+    },
+  },
+  talk: {
+    key: "talk",
+    eyebrow: "Teaching · London",
+    heading: "Teaching women in business to put AI to work",
+    when: "[add: month and year]",
+    body: [
+      "I spoke at a women in tech event in London, where I taught a room of women how to apply AI and build it into their own businesses. [add: the event name, who organised it, and how many came]",
+      "[add: what you covered and how you ran it, e.g. the tools, a live demo, what people built during the session]",
+    ],
+    learned:
+      "[add: what teaching adults who run real businesses taught you]",
+    bet: {
+      downside: "An hour in front of a room of adults who run their own businesses, as the youngest person there.",
+      upside: "Every person in that room leaving with AI working inside their business.",
+    },
+    // Drop the photo at public/portfolio/women-in-tech-london.jpg and rebuild:
+    // it only renders once the file exists. Export it (or screenshot it) so
+    // the phone's location data is stripped before it goes public.
+    image: {
+      src: "/portfolio/women-in-tech-london.jpg",
+      width: 2000,
+      height: 1500,
+      alt: "Folahan giving a thumbs up at the front of a London classroom, with the women from his AI workshop smiling and waving behind him.",
+    },
+  },
+  projects: [
+    {
+      key: "decision-intel",
+      kicker: "My startup",
+      name: "Decision Intel",
+      role: "Founder, building it solo",
+      when: "2025 – now",
+      status: "Live",
+      summary:
+        "Software that checks the reasoning behind a big investment decision before the money is committed.",
+      built: [
+        "The whole product, end to end: the website, the app investment teams use, and a Chrome extension.",
+        "The engine that reads an investment memo, pulls out every assumption the deal depends on, and checks each one against how similar past deals turned out.",
+        "A library of 1,307 public merger filings to compare every deal against.",
+        "34 automatic checks for structural weak spots, like how a deal is financed or how much rides on a single customer.",
+      ],
+      hard:
+        "Proving it works. If you test an AI on deals that already happened, it may already ‘know’ how they ended, so a good score can be fake. So the engine reads each memo outcome-blind, using only what was known on the day of the decision, and every audit is time-stamped and sealed so it can be checked later.",
+      learned:
+        "I first aimed it at people buying small businesses. Then I sat in a meeting with one and saw that their whole decision was a single table of numbers, with almost nothing for the product to check. The product wasn’t the problem; the customer was too small for it. So I moved to private-equity firms deciding on $500M to $1B buyouts, where the reasoning is written down in detail and one mistake costs hundreds of millions.",
+      result:
+        "Live at decision-intel.com. The way in for a firm is a retrospective audit: they give me a deal they’ve already closed, the engine reads it without knowing the outcome, and they grade it against what actually happened. [add: audits run, firms trialling it, anything you can share]",
+      stats: [
+        { value: "1,307", label: "past merger filings it compares against" },
+        { value: "34", label: "automatic checks on every deal" },
+        { value: "Solo", label: "from first idea to live product" },
+      ],
+      tools: ["Next.js", "TypeScript", "PostgreSQL", "Gemini and Claude", "Stripe"],
+      links: [{ label: "Visit decision-intel.com", href: "https://decision-intel.com" }],
+      visual: "decision-intel",
+      visualCaption: "How an audit works, simplified.",
+      bet: {
+        downside: "My evenings and weekends, if no firm ever buys it. Even then, I’d know how the biggest investment decisions really get made.",
+        upside: "Becoming the standard check on the reasoning before money is committed to deals worth hundreds of millions.",
+      },
+    },
+    {
+      key: "sentinel",
+      kicker: "Personal project",
+      name: "Sentinel",
+      role: "Solo build",
+      when: "Mar – Jun 2026",
+      status: "Live · paper money only",
+      summary:
+        "An AI system that reads the financial news all day, spots when the market has overreacted, and argues with itself before it flags anything.",
+      built: [
+        "A pipeline that reads 42 news feeds plus Reddit, and pulls out the events that could move a stock.",
+        "Five AI ‘analysts’, each hunting one pattern: panic overreactions, healthy companies dragged down by a sector sell-off, good news the market hasn’t priced in, and earnings risk.",
+        "A red-team analyst whose only job is to tear down every idea before it reaches me.",
+        "A tracker that checks every call after 1, 5, 10 and 30 days and feeds the results back in.",
+      ],
+      hard:
+        "Getting the AI to be honest about how sure it is. Models say ‘80% confident’ about almost everything. So Sentinel keeps score of its own past calls and re-maps its confidence to how often it has actually been right: when it says 78%, it has been right about 78% of the time on calls like that.",
+      learned:
+        "Feeling confident and being right are different things, for software and for people. It’s the same idea my paper on the 2008 crisis started from, and it’s at the centre of Decision Intel.",
+      result:
+        "Live, trading paper money only through a broker’s practice account, never real money. The two ideas that mattered most, arguing against itself and keeping score, also run through Decision Intel.",
+      stats: [
+        { value: "42", label: "news feeds read around the clock" },
+        { value: "5", label: "AI analysts, one of them a red team" },
+        { value: "4", label: "check-ins on every call: 1, 5, 10, 30 days" },
+      ],
+      tools: ["React", "TypeScript", "Supabase", "Gemini"],
+      links: [
+        { label: "See it live", href: "https://sentinel-nine-sable.vercel.app" },
+        { label: "Code on GitHub", href: "https://github.com/FolahanWilliams/Sentinel" },
+      ],
+      visual: "sentinel",
+      visualCaption: "An illustrative feed, not advice. The last idea gets killed by the red team.",
+      bet: {
+        downside: "Paper money only, so the worst it could cost me was time.",
+        upside: "A system that knows how often it’s actually right, an idea that became part of Decision Intel.",
+      },
+    },
+    {
+      key: "sankore",
+      kicker: "Internship work · Sankore",
+      name: "Portfolio Intelligence Dashboard",
+      role: "Investment Analyst Intern · built it solo",
+      when: "Summer 2026 · a three-week build",
+      status: "Shipped",
+      summary:
+        "One screen that shows a fund manager what the fund owns, how much risk it’s carrying, and what drove its returns, instead of rebuilding that by hand in spreadsheets.",
+      built: [
+        "The whole tool, solo, in three weeks: the engine that does the fund maths and the screen the portfolio manager uses.",
+        "Four views on one page: what the fund holds, its exposure by sector and region, its risk, and where its returns came from compared with its benchmark.",
+        "The stretch goals too: alerts when the fund breaks one of its own limits, a ‘what if’ tool that shocks the market and re-prices the fund instantly, and one-click PDF export.",
+        "Tests that recompute the key numbers a second, independent way and check they match to within 0.1%.",
+      ],
+      hard:
+        "The real data was a single day’s snapshot, and you can’t measure things like volatility from one day of prices. Rather than show numbers that looked right but weren’t, I made the dashboard notice when it only has one day, switch to the measures that are honest with that data, and label which panels fill in once more history is collected.",
+      learned:
+        "Build for the person who has to use it every morning. I kept all the fund maths separate from the screen, so the firm can plug in live data later without rewriting anything, and I mapped how every piece fits together in week one, before writing the code.",
+      result:
+        "Shipped the core dashboard and every stretch goal within the three weeks. [add: what happened next, e.g. who uses it or what the team said]",
+      stats: [
+        { value: "3 weeks", label: "from a blank page to shipped" },
+        { value: "0.1%", label: "every key number double-checked to" },
+        { value: "1", label: "screen instead of a pile of spreadsheets" },
+      ],
+      tools: ["Python", "pandas", "FastAPI", "React", "TypeScript"],
+      links: [],
+      visual: "sankore",
+      visualCaption: "A sketch of the layout. The real screen shows the fund’s own data, so it stays private.",
+      bet: {
+        downside: "Three weeks of an internship spent building instead of just reporting.",
+        upside: "A tool the fund can keep using after I’ve gone, instead of one more summer of spreadsheets.",
+      },
+    },
+    {
+      key: "nexus",
+      kicker: "Personal project",
+      name: "Nexus",
+      aka: "the app is called QuestFlow",
+      role: "Solo build",
+      when: "Feb – Jul 2026",
+      status: "Open source",
+      summary:
+        "A productivity app that turns your to-do list into a role-playing game, with an AI coach that can actually do things for you.",
+      built: [
+        "The game: tasks become quests that earn XP and gold, with character classes, a skill tree, and boss battles against things like the Procrastination Demon.",
+        "Hoot, an AI coach you can talk to that can take 12 real actions in the app, like adding tasks, setting goals or planning your week.",
+        "A vocabulary trainer that uses spaced repetition, plus exercises for arguing, summarising and speaking.",
+        "Accounts, paid subscriptions, and an offline mode so it still works on a phone with no signal.",
+      ],
+      hard:
+        "Making it work offline. Everything saves to the device first, so the app opens instantly and keeps working with no connection, then syncs to your account once you’re back online.",
+      learned:
+        "Most productivity apps treat motivation as the user’s problem. I started treating it as a design problem: small rewards right now, progress you can see over months, and an app that notices when you’re starting to burn out.",
+      result:
+        "The full code is public on GitHub. [add: whether people use it, and how many]",
+      stats: [
+        { value: "20", label: "screens, from quests to a map of what you’ve learned" },
+        { value: "12", label: "actions the AI coach can take for you" },
+        { value: "5", label: "character classes to level up" },
+      ],
+      tools: ["Next.js", "TypeScript", "Supabase", "Gemini", "Stripe"],
+      links: [{ label: "Code on GitHub", href: "https://github.com/FolahanWilliams/nexus-tracker" }],
+      visual: "nexus",
+      visualCaption: "Illustrative, built from the app’s real features.",
+      bet: {
+        downside: "A few months of spare time on an app nobody else ends up using.",
+        upside: "Habits that feel like a game people actually want to keep playing.",
+      },
+    },
+  ] as PortfolioProject[],
+  // "Also include links to any other online work" (the application's words).
+  elsewhere: {
+    heading: "Everything else",
+    intro: "The rest of my work, and the quickest ways to reach me.",
+  },
+  closing: {
+    heading: "There’s more on the main page",
+    body: "How I think, the research that started all of this, and the life around the work: piano, guitar, the gym, and faith.",
+    cta: "Back to the main page",
+  },
+};

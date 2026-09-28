@@ -30,3 +30,15 @@ Decision Intel is a reasoning-audit platform founded by Folahan Williams. It rea
 **What is Decision Intel?** A reasoning-audit platform founded by Folahan Williams that surfaces cognitive biases in strategic decisions and grades decision quality.
 
 **What is Folahan Williams known for?** Founding Decision Intel; research on the cognitive roots of the 2008 financial crisis; co-founding Finding Finance; and a TED-style talk on metacognition.
+
+## Portfolio (https://folahanwilliams.com/portfolio)
+
+What Folahan has built, each with what he built, the hard part, what he learned, where it stands, and the bet it was. Everything was built solo.
+
+- **Decision Intel** (2025 – now, live): his startup. Software that checks the reasoning behind a big investment decision before the money is committed, for private-equity investment committees. Compares each deal against 1,307 past merger filings, with 34 automatic checks for structural weak spots. https://decision-intel.com
+- **Sentinel** (Mar – Jun 2026, live, paper money only): an AI market-intelligence system that reads 42 news feeds, uses five AI analysts including a red team that argues against every idea, and calibrates its confidence against its own track record. https://sentinel-nine-sable.vercel.app
+- **Portfolio Intelligence Dashboard, Sankore** (summer 2026, shipped in three weeks during an Investment Analyst internship): one screen showing a fund manager holdings, exposure, risk and performance attribution, with limit alerts, a what-if scenario tool, and figures double-checked to within 0.1%.
+- **Nexus / QuestFlow** (Feb – Jul 2026, open source): a productivity app that turns a to-do list into a role-playing game, with an AI coach that can take real actions in the app. https://github.com/FolahanWilliams/nexus-tracker
+- **Teaching**: spoke at a women in tech event in London, teaching women how to apply AI in their own businesses.
+
+His operating philosophy, from David Gardner's Rule Breaker Investing: the most a stock can fall is 100%, but its upside has no ceiling, so he looks for asymmetric opportunities, small downside and open-ended upside, in markets and in life.

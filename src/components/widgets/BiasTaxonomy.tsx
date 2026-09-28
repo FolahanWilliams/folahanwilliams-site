@@ -1,12 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { biasTaxonomy } from "@/content/content";
 
 /** A cloud of the biases the audit hunts — hover one to read what it does. */
 export function BiasTaxonomy() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [sel, setSel] = useState<number | null>(null);
   const active = sel != null ? biasTaxonomy[sel] : null;
 

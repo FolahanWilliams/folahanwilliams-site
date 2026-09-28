@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Section } from "./Section";
 import { content } from "@/content/content";
 import { MiniGauge } from "./widgets/MiniGauge";
@@ -27,7 +28,10 @@ export function Work() {
   return (
     <Section className="section-flush-bottom">
       <h2 style={{ fontSize: "clamp(1.7rem, 4vw, 2.3rem)", marginBottom: "0.75rem" }}>{heading}</h2>
-      <p style={{ color: "var(--color-ink-soft)", marginBottom: "2.5rem", maxWidth: "34rem" }}>{subhead}</p>
+      <p style={{ color: "var(--color-ink-soft)", marginBottom: "0.9rem", maxWidth: "34rem" }}>{subhead}</p>
+      <Link href="/portfolio" style={{ display: "inline-block", marginBottom: "2.5rem", fontSize: "0.95rem", fontWeight: 600 }}>
+        The full story of each build, and the bet behind it →
+      </Link>
 
       <div className="bento">
         {content.work.map((w) => {

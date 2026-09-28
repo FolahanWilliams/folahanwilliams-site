@@ -1,5 +1,6 @@
 import { Section } from "./Section";
-import { content } from "@/content/content";
+import { content, piano } from "@/content/content";
+import { hasPublicFile } from "@/lib/public-assets";
 import { AvailabilityTile } from "./widgets/AvailabilityTile";
 import { PianoTile } from "./widgets/PianoTile";
 import { GuitarTile } from "./widgets/GuitarTile";
@@ -47,7 +48,7 @@ export function About() {
         </div>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>
-          <PianoTile />
+          <PianoTile hasAudio={hasPublicFile(piano.audio)} />
         </article>
 
         <article className="bento-tile" style={{ gridColumn: "span 3" }}>

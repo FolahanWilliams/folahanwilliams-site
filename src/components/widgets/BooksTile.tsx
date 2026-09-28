@@ -1,14 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { books } from "@/content/content";
 
 const SPINES = ["#b5532a", "#8a6d3b", "#6f5536", "#9b3b2f", "#7a6248"];
 
 /** An interactive shelf — hover a spine to read why the book matters. */
 export function BooksTile() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [sel, setSel] = useState(0);
   const b = books[sel];
 

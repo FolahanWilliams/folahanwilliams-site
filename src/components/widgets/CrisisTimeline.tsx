@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { crisisTimeline } from "@/content/content";
 
 /** The 2008 crash as a descending line; hover/click a point to read the event
  *  and the cognitive bias behind it — the thesis, made interactive. */
 export function CrisisTimeline() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [sel, setSel] = useState(crisisTimeline.length - 1); // default: Lehman
   const W = 460;
   const H = 132;

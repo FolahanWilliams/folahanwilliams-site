@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { operatingLoop } from "@/content/content";
 
 /**
@@ -24,7 +25,7 @@ const at = (r: number, deg: number): [number, number] => [CX + r * Math.cos(rad(
 
 export function FounderLoop() {
   const { eyebrow, caption, nodes } = operatingLoop;
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const n = nodes.length;
   const angleOf = (i: number) => -90 + i * (360 / n);
