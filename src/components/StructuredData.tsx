@@ -1,4 +1,5 @@
 import { seo, content, experience, education } from "@/content/content";
+import { hasPublicFile } from "@/lib/public-assets";
 
 // The published 2008 paper, pulled from the work list so its URL stays in sync.
 const thesis = content.work.find((w) => w.key === "thesis-2008");
@@ -19,7 +20,8 @@ export function StructuredData() {
       "@id": personId,
       name: content.name,
       url: seo.siteUrl,
-      image: `${seo.siteUrl}/headshot.jpg`,
+      // only advertise the photo once it exists (a 404 image hurts rich results)
+      ...(hasPublicFile("headshot.jpg") ? { image: `${seo.siteUrl}/headshot.jpg` } : {}),
       description: seo.description,
       jobTitle: seo.jobTitle,
       worksFor: { "@id": orgId },

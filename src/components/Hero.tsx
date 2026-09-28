@@ -1,4 +1,5 @@
 import { content } from "@/content/content";
+import { hasPublicFile } from "@/lib/public-assets";
 import { Avatar } from "./Avatar";
 import { FacetWheel } from "./widgets/FacetWheel";
 
@@ -9,7 +10,7 @@ export function Hero() {
       <div className="hero-grid" style={{ maxWidth: "75rem", margin: "0 auto" }}>
         {/* left — who I am + what I'm building, right now */}
         <div className="hero-copy">
-          <Avatar size={88} />
+          <Avatar size={88} src={hasPublicFile("headshot.jpg") ? "/headshot.jpg" : undefined} />
 
           <h1 style={{ fontSize: "clamp(2.1rem, 5.2vw, 3.1rem)", margin: 0, lineHeight: 1.05 }}>{name}</h1>
 

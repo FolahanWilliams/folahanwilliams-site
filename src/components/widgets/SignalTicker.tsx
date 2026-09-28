@@ -1,13 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { sentinelSignals } from "@/content/content";
 
 /** Sentinel's conviction feed — the highlighted signal advances on a timer.
  *  Illustrative, not advice; the last row is the red-team killing a thesis. */
 export function SignalTicker() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [i, setI] = useState(0);
 
   useEffect(() => {
@@ -27,7 +28,7 @@ export function SignalTicker() {
       <div style={{ display: "flex", flexDirection: "column", gap: "0.45rem" }}>
         {sentinelSignals.map((s, idx) => {
           const on = idx === i;
-          const color = s.killed ? "#a8322a" : "#3f7d62";
+          const color = s.killed ? "#a8322a" : "#37705a";
           return (
             <motion.div
               key={s.agent}

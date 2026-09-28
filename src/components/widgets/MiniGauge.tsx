@@ -1,18 +1,19 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { dqiDemo } from "@/content/content";
 
 /** A compact Decision-Quality gauge that fills when scrolled into view. */
 export function MiniGauge() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const { score, label } = dqiDemo;
   const r = 52;
   const cx = 64;
   const cy = 60;
   const circ = Math.PI * r;
   const filled = (score / 100) * circ;
-  const tone = score >= 70 ? "#3f7d62" : score >= 45 ? "#c8784f" : "#a8322a";
+  const tone = score >= 70 ? "#37705a" : score >= 45 ? "#c8784f" : "#a8322a";
 
   return (
     <div style={{ display: "flex", alignItems: "center", gap: "0.9rem", marginTop: "0.9rem" }}>

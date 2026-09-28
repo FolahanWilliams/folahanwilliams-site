@@ -24,7 +24,7 @@ export function RecordTile() {
       </div>
 
       <div style={{ marginTop: "1rem", borderTop: "1px solid var(--color-line)", paddingTop: "0.8rem", fontSize: "0.85rem", color: "var(--color-ink-soft)" }}>
-        {education.school} <span style={{ opacity: 0.7 }}>· {education.detail} · {education.when}</span>
+        {education.school} <span style={{ fontSize: "0.8rem" }}>· {education.detail} · {education.when}</span>
       </div>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.35rem", marginTop: "0.9rem" }}>

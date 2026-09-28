@@ -3,9 +3,10 @@
 import { useRef, useState } from "react";
 import { piano } from "@/content/content";
 
-/** A small animated keyboard + an optional player. Drop public/piano.mp3 and the
- *  play button lights up; without it, it gracefully says "coming soon". */
-export function PianoTile() {
+/** A small animated keyboard + an optional player. Drop public/piano.mp3 and
+ *  rebuild: `hasAudio` (checked on the server) turns the play button on.
+ *  Without the file there is no button at all, rather than a dead one. */
+export function PianoTile({ hasAudio = false }: { hasAudio?: boolean }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [noAudio, setNoAudio] = useState(false);
@@ -50,31 +51,35 @@ export function PianoTile() {
 
       <p style={{ margin: "0.9rem 0 0", color: "var(--color-ink-soft)", fontSize: "0.9rem", lineHeight: 1.55 }}>{piano.body}</p>
 
-      <button
-        onClick={toggle}
-        style={{
-          marginTop: "1rem",
-          cursor: noAudio ? "default" : "pointer",
-          borderRadius: 999,
-          padding: "0.5rem 1rem",
-          fontSize: "0.88rem",
-          border: "1px solid var(--color-clay)",
-          background: "transparent",
-          color: "var(--color-clay)",
-        }}
-        disabled={noAudio}
-      >
-        {noAudio ? "Recording coming soon" : playing ? "❚❚  Pause" : "▶  Play"}
-      </button>
+      {hasAudio && !noAudio && (
+        <>
+          <button
+            onClick={toggle}
+            aria-pressed={playing}
+            style={{
+              marginTop: "1rem",
+              cursor: "pointer",
+              borderRadius: 999,
+              padding: "0.5rem 1rem",
+              fontSize: "0.88rem",
+              border: "1px solid var(--color-clay)",
+              background: "transparent",
+              color: "var(--color-clay)",
+            }}
+          >
+            {playing ? "❚❚  Pause" : "▶  Play"}
+          </button>
 
-      {/* preload none so a missing file doesn't 404 until clicked */}
-      <audio
-        ref={audioRef}
-        src={piano.audio}
-        preload="none"
-        onEnded={() => setPlaying(false)}
-        onError={() => setNoAudio(true)}
-      />
+          {/* preload none: nothing downloads until someone presses play */}
+          <audio
+            ref={audioRef}
+            src={piano.audio}
+            preload="none"
+            onEnded={() => setPlaying(false)}
+            onError={() => setNoAudio(true)}
+          />
+        </>
+      )}
     </div>
   );
 }

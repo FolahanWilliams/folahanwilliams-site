@@ -70,7 +70,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
+    // data-scroll-behavior: Next 16 only keeps CSS smooth scrolling off during
+    // route changes (so a page switch doesn't animate) when this is set.
+    <html lang="en" className={`${fraunces.variable} ${inter.variable}`} data-scroll-behavior="smooth">
       <head>
         <StructuredData />
       </head>

@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { fitness } from "@/content/content";
 
+// Each tone is both text on the card and the fill behind white text, so all
+// four clear WCAG AA (4.5:1) both ways.
 const FOCUS_COLOR: Record<string, string> = {
-  Push: "#b5532a",
-  Pull: "#3f7d62",
-  Legs: "#c07f2f",
-  Rest: "#a89b8c",
+  Push: "#a84c25",
+  Pull: "#37705a",
+  Legs: "#8f5b1d",
+  Rest: "#6f655a",
 };
 
 /** A live training-split week: tap or hover a day to see the focus. Same
@@ -16,7 +19,7 @@ const FOCUS_COLOR: Record<string, string> = {
  *  reduced-motion-safe, touch + keyboard friendly. */
 export function GymTile() {
   const { eyebrow, heading, daysPerWeek, body, split } = fitness;
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [active, setActive] = useState(0);
   const current = split[active];
 

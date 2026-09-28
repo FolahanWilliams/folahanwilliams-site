@@ -11,23 +11,30 @@ export function AvailabilityTile() {
       <h3 style={{ fontSize: "1.25rem", margin: "0.4rem 0 0.5rem" }}>When I&rsquo;m around</h3>
       <p style={{ margin: "0 0 1rem", color: "var(--color-ink-soft)", fontSize: "0.88rem", lineHeight: 1.5 }}>{note}</p>
 
+      {/* rows are display:contents wrappers, so the ARIA table has real
+          row / header / cell structure while the CSS grid lays it out */}
       <div className="avail-grid" role="table" aria-label="Weekly availability">
-        <div />
-        {slots.map((s) => (
-          <div key={s} className="avail-head">
-            {s}
+        <div role="row" style={{ display: "contents" }}>
+          <div role="columnheader">
+            <span className="sr-only">Day</span>
           </div>
-        ))}
+          {slots.map((s) => (
+            <div key={s} role="columnheader" className="avail-head">
+              {s}
+            </div>
+          ))}
+        </div>
         {days.map((d, di) => (
-          <div key={d} style={{ display: "contents" }}>
-            <div className="avail-day">{d}</div>
+          <div key={d} role="row" style={{ display: "contents" }}>
+            <div role="rowheader" className="avail-day">{d}</div>
             {slots.map((s, si) => (
               <div
                 key={s}
+                role="cell"
                 className={grid[di]?.[si] ? "avail-cell avail-free" : "avail-cell avail-busy"}
                 title={grid[di]?.[si] ? `Free · ${d} ${s}` : `Busy · ${d} ${s}`}
               >
-                {grid[di]?.[si] ? "free" : ""}
+                {grid[di]?.[si] ? "free" : <span className="sr-only">busy</span>}
               </div>
             ))}
           </div>

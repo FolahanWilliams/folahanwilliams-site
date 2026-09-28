@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { content } from "./content";
+import { content, portfolio } from "./content";
 
 describe("content integrity", () => {
   it("has a name and a hero line", () => {
@@ -37,5 +37,45 @@ describe("content integrity", () => {
 
   it("contact email is a mailto-able address", () => {
     expect(content.contactEmail).toMatch(/^[^@\s]+@[^@\s]+\.[^@\s]+$/);
+  });
+});
+
+describe("portfolio page integrity", () => {
+  const nonEmpty = (s: string) => expect(s.trim().length).toBeGreaterThan(0);
+
+  it("has unique anchor keys (they are URL fragments)", () => {
+    const keys = [...portfolio.projects.map((p) => p.key), portfolio.talk.key, "philosophy"];
+    expect(new Set(keys).size).toBe(keys.length);
+    for (const k of keys) expect(k).toMatch(/^[a-z0-9-]+$/);
+  });
+
+  it("answers the application's questions for every project, plus the bet", () => {
+    expect(portfolio.projects.length).toBeGreaterThanOrEqual(3);
+    for (const p of portfolio.projects) {
+      [p.name, p.kicker, p.role, p.when, p.status, p.summary, p.hard, p.learned, p.result, p.visualCaption].forEach(nonEmpty);
+      expect(p.built.length).toBeGreaterThan(0);
+      p.built.forEach(nonEmpty);
+      nonEmpty(p.bet.downside);
+      nonEmpty(p.bet.upside);
+      expect(p.stats.length).toBe(3);
+    }
+  });
+
+  it("every project and channel link is an absolute http(s) URL", () => {
+    for (const p of portfolio.projects) for (const l of p.links) expect(l.href).toMatch(/^https?:\/\/.+/);
+  });
+
+  it("never puts invented words in Gardner's mouth: a quote, if set, is attributed", () => {
+    const { quote, source } = portfolio.philosophy;
+    if (quote) {
+      nonEmpty(source.author);
+      nonEmpty(source.title);
+    }
+    portfolio.philosophy.body.forEach(nonEmpty);
+  });
+
+  it("the talk photo, when referenced, lives under public/portfolio/", () => {
+    expect(portfolio.talk.image.src).toMatch(/^\/portfolio\/[\w-]+\.(jpe?g|png|webp)$/);
+    nonEmpty(portfolio.talk.image.alt);
   });
 });

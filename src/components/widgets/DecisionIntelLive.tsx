@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { reasoningLab, type LabBias } from "@/content/content";
 
 /**
@@ -24,7 +25,7 @@ const DI = {
   ink: "#0f172a",
   sub: "#475569",
   muted: "#64748b",
-  green: "#16a34a",
+  green: "#15803d",
   emerald: "#10b981",
   amber: "#d97706",
   red: "#ef4444",
@@ -75,7 +76,7 @@ function arcFwd(cx: number, cy: number, r: number, a0: number, a1: number) {
 }
 
 function LiveDqiGauge({ score, size = 190 }: { score: number; size?: number }) {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const clamped = Math.max(0, Math.min(100, score));
   const cx = size / 2;
   const cy = size / 2;
@@ -120,7 +121,7 @@ function LiveDqiGauge({ score, size = 190 }: { score: number; size?: number }) {
 
 export function DecisionIntelLive() {
   const lab = reasoningLab;
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const [active, setActive] = useState<string[]>([]);
   const [last, setLast] = useState<string | null>(null);
 

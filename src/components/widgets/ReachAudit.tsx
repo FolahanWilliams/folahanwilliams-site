@@ -1,10 +1,11 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useInView, useReducedMotion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { reachAudit } from "@/content/content";
 
-const GREEN = "#3f7d62";
+const GREEN = "#37705a";
 
 /**
  * "Get in touch", run through the same reasoning audit as the rest of the
@@ -16,7 +17,7 @@ const GREEN = "#3f7d62";
  * stagger — just the finished audit.
  */
 export function ReachAudit() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, amount: 0.45 });
   const { eyebrow, product, memoTag, memo, score, verdict, signals, footnote } = reachAudit;

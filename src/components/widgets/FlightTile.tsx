@@ -1,6 +1,6 @@
 "use client";
 
-import { useReducedMotion } from "framer-motion";
+import { useReducedMotion } from "@/lib/motion";
 import { journey } from "@/content/content";
 
 // A top-down airliner silhouette — swept wings, fuselage, tailplane — drawn
@@ -20,7 +20,7 @@ const PLANE =
  * full route drawn, so the story still reads as a static map.
  */
 export function FlightTile() {
-  const reduce = useReducedMotion() ?? false;
+  const reduce = useReducedMotion();
   const { eyebrow, heading, caption, path, stops } = journey;
   const end = stops[stops.length - 1];
 

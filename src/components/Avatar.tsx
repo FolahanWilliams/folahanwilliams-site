@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { content } from "@/content/content";
 
-/** Headshot with a graceful monogram fallback — shows initials until
- *  public/headshot.jpg loads (and stays graceful if it isn't there yet). */
-export function Avatar({ size = 104 }: { size?: number }) {
+/** Headshot with a graceful monogram fallback — shows initials until the photo
+ *  loads. `src` is only passed once public/headshot.jpg exists (checked on the
+ *  server), so no image request is made, and none 404s, before then. */
+export function Avatar({ size = 104, src }: { size?: number; src?: string }) {
   const [loaded, setLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
   const initials = content.name
@@ -34,10 +35,10 @@ export function Avatar({ size = 104 }: { size?: number }) {
       <span style={{ fontFamily: "var(--font-display), serif", fontSize: size * 0.38, color: "var(--color-clay)" }}>
         {initials}
       </span>
-      {!failed && (
+      {src && !failed && (
         // eslint-disable-next-line @next/next/no-img-element
         <img
-          src="/headshot.jpg"
+          src={src}
           alt={content.name}
           onLoad={() => setLoaded(true)}
           onError={() => setFailed(true)}
