@@ -914,7 +914,8 @@ html { overflow-x: clip; }
   font-size: clamp(1.15rem, 2.4vw, 1.4rem);
   line-height: 1.45;
 }
-.pf-philo-quote cite {
+.pf-philo-quote cite,
+.pf-philo-quote figcaption {
   display: block;
   margin-top: 0.55rem;
   font-style: normal;
@@ -1249,15 +1250,17 @@ html { overflow-x: clip; }
   align-items: center;
   max-width: none;
 }
-.pf-talk-photo { margin: 0; }
-.pf-talk-photo img {
-  display: block;
-  width: 100%;
-  height: auto;
+/* a fixed 4:3 frame (next/image `fill`), so a photo of any size just works */
+.pf-talk-photo {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  margin: 0;
+  overflow: hidden;
   border: 1px solid var(--color-line);
   border-radius: 16px;
   box-shadow: 0 24px 50px -30px color-mix(in srgb, var(--color-ink) 60%, transparent);
 }
+.pf-talk-photo img { object-fit: cover; }
 .pf-talk-p { margin: 0.85rem 0 0; font-size: 1.04rem; line-height: 1.7; }
 @media (max-width: 900px) {
   .pf-talk[data-photo="true"] { grid-template-columns: 1fr; }

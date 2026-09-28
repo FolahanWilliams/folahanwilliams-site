@@ -728,11 +728,13 @@ export const portfolio = {
     eyebrow: "The philosophy I live by",
     heading: "Capped downside, uncapped upside",
     source: { title: "Rule Breaker Investing", author: "David Gardner" },
-    // Paste the exact line from the book here and it shows as a pull-quote
-    // (quote marks are only ever put around Gardner's real words).
-    quote: "",
+    // The pull line. It's written from how I explain the idea, so it's shown as
+    // a paraphrase of Gardner (no quote marks). If you swap in his exact words
+    // from the book, set quoteIsParaphrase to false and it becomes a quotation.
+    quote: "The worst a stock can do is go from 100 to zero. The best it can do has no ceiling.",
+    quoteIsParaphrase: true,
     body: [
-      "The idea comes from David Gardner’s Rule Breaker Investing. The most a stock can ever fall is 100%, down to zero. How far it can rise has no ceiling. So the losses on your worst bets are capped, and the gains on your best ones aren’t.",
+      "It comes from David Gardner’s Rule Breaker Investing, and it means the losses on your worst bets are capped while the gains on your best ones aren’t.",
       "I use the same maths outside the market. When an opportunity comes up, I look at two things: how bad the worst case really is, and whether the best case has a ceiling. When the downside is small and the upside is open-ended, I take it.",
       "I won’t win on accolades, and a list of them wouldn’t tell you much anyway. So under every project below, I’ve written down the bet I was making.",
     ],
@@ -761,13 +763,12 @@ export const portfolio = {
       downside: "An hour in front of a room of adults who run their own businesses, as the youngest person there.",
       upside: "Every person in that room leaving with AI working inside their business.",
     },
-    // Drop the photo at public/portfolio/women-in-tech-london.jpg and rebuild:
-    // it only renders once the file exists. Export it (or screenshot it) so
-    // the phone's location data is stripped before it goes public.
+    // Upload the photo into public/portfolio/talk/ with ANY filename (.jpg,
+    // .jpeg, .png, .webp): the first image in that folder is shown, and nothing
+    // renders until one is there. Turn off location when you export/share it,
+    // since the original file is public.
     image: {
-      src: "/portfolio/women-in-tech-london.jpg",
-      width: 2000,
-      height: 1500,
+      dir: "portfolio/talk",
       alt: "Folahan giving a thumbs up at the front of a London classroom, with the women from his AI workshop smiling and waving behind him.",
     },
   },

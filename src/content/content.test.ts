@@ -65,17 +65,18 @@ describe("portfolio page integrity", () => {
     for (const p of portfolio.projects) for (const l of p.links) expect(l.href).toMatch(/^https?:\/\/.+/);
   });
 
-  it("never puts invented words in Gardner's mouth: a quote, if set, is attributed", () => {
-    const { quote, source } = portfolio.philosophy;
+  it("the pull line is always attributed, and flagged as a paraphrase or a quotation", () => {
+    const { quote, quoteIsParaphrase, source } = portfolio.philosophy;
     if (quote) {
       nonEmpty(source.author);
       nonEmpty(source.title);
+      expect(typeof quoteIsParaphrase).toBe("boolean");
     }
     portfolio.philosophy.body.forEach(nonEmpty);
   });
 
-  it("the talk photo, when referenced, lives under public/portfolio/", () => {
-    expect(portfolio.talk.image.src).toMatch(/^\/portfolio\/[\w-]+\.(jpe?g|png|webp)$/);
+  it("the talk photo folder lives under public/portfolio/ and has alt text", () => {
+    expect(portfolio.talk.image.dir).toMatch(/^portfolio\/[\w-]+$/);
     nonEmpty(portfolio.talk.image.alt);
   });
 });

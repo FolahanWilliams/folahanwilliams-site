@@ -44,7 +44,7 @@ function AsymmetryChart() {
  * how I think rather than a trophy shelf.
  */
 export function Philosophy() {
-  const { eyebrow, heading, source, quote, body, vision, chart } = portfolio.philosophy;
+  const { eyebrow, heading, source, quote, quoteIsParaphrase, body, vision, chart } = portfolio.philosophy;
   return (
     <div id="philosophy" className="anchor">
       <Section className="pf-philo">
@@ -55,14 +55,24 @@ export function Philosophy() {
               {heading}
             </h2>
 
-            {quote && (
-              <blockquote className="pf-philo-quote">
-                <p>&ldquo;{quote}&rdquo;</p>
-                <cite>
-                  {source.author}, <i>{source.title}</i>
-                </cite>
-              </blockquote>
-            )}
+            {/* quote marks only around Gardner's exact words; a line written
+                from my own telling of the idea is labelled as a paraphrase */}
+            {quote &&
+              (quoteIsParaphrase ? (
+                <figure className="pf-philo-quote">
+                  <p>{quote}</p>
+                  <figcaption>
+                    Paraphrasing {source.author}, <i>{source.title}</i>
+                  </figcaption>
+                </figure>
+              ) : (
+                <blockquote className="pf-philo-quote">
+                  <p>&ldquo;{quote}&rdquo;</p>
+                  <cite>
+                    {source.author}, <i>{source.title}</i>
+                  </cite>
+                </blockquote>
+              ))}
 
             {body.map((p) => (
               <p key={p} className="pf-philo-p">

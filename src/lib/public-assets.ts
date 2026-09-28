@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 /**
@@ -9,4 +9,19 @@ import { join } from "node:path";
  */
 export function hasPublicFile(path: string): boolean {
   return existsSync(join(process.cwd(), "public", path.replace(/^\//, "")));
+}
+
+const IMAGE = /\.(jpe?g|png|webp|avif)$/i;
+
+/**
+ * The first image in a `public/` drop folder (alphabetical), as a URL path,
+ * or undefined if there isn't one. Lets a photo be uploaded straight from a
+ * phone via GitHub with whatever filename it already has.
+ */
+export function findPublicImage(dir: string): string | undefined {
+  const clean = dir.replace(/^\/|\/$/g, "");
+  const abs = join(process.cwd(), "public", clean);
+  if (!existsSync(abs)) return undefined;
+  const file = readdirSync(abs).filter((f) => IMAGE.test(f)).sort()[0];
+  return file ? `/${clean}/${encodeURIComponent(file)}` : undefined;
 }
